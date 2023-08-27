@@ -13,12 +13,12 @@ function PropertyDetailsPage() {
   const getProperty = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/properties/${propertyId}`
+        `${process.env.REACT_APP_API_URL}/properties/${propertyId}`
       );
       console.log(response.data);
       setProperty(response.data);
     } catch (error) {
-      console.error(`Error fecthing propery with id ${propertyId}`);
+      console.error(`Error fecthing property with id ${propertyId}`);
     }
   };
 

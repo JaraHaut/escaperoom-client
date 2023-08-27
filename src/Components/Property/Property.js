@@ -1,4 +1,5 @@
 import "./Property.scss";
+//import {Link} from react-router-dom;
 
 function Property({ property }) {
   console.log(property);
