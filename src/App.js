@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.scss";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import MainPage from "./Pages/MainPage/MainPage";
+import AgentPage from "./Pages/AgentPage/AgentPage";
+import NewPropertyPage from "./Pages/NewPropertyPage/NewPropertyPage";
+import NewReviewPage from "./Pages/NewReviewPage/NewReviewPage";
+import PropertyPage from "./Pages/PropertyPage/PropertyPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/properties" element={<MainPage />} />
+          <Route path="/properties/:propertyId" element={<PropertyPage />} />
+          <Route path="/properties/add" element={<NewPropertyPage />} />
+          <Route
+            path="/properties/:propertyId/review"
+            element={<NewReviewPage />}
+          />
+          <Route path="/properties/agents" element={<AgentPage />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
