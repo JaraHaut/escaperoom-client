@@ -4,7 +4,7 @@ import MainPage from "./Pages/MainPage/MainPage";
 import AgentPage from "./Pages/AgentPage/AgentPage";
 import NewPropertyPage from "./Pages/NewPropertyPage/NewPropertyPage";
 import NewReviewPage from "./Pages/NewReviewPage/NewReviewPage";
-import PropertyPage from "./Pages/PropertyPage/PropertyPage";
+import PropertyDetailsPage from "./Pages/PropertyDetailsPage/PropertyDetailsPage";
 
 function App() {
   return (
@@ -12,7 +12,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/properties" element={<MainPage />} />
-          <Route path="/properties/:propertyId" element={<PropertyPage />} />
+          <Route
+            path="/properties/:propertyId"
+            element={<PropertyDetailsPage />}
+          />
           <Route path="/properties/add" element={<NewPropertyPage />} />
           <Route
             path="/properties/:propertyId/review"
