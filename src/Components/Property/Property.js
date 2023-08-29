@@ -1,7 +1,10 @@
 import "./Property.scss";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function Property({ property }) {
+  const { propertyId } = useParams();
+
   console.log(property);
   if (!property) {
     return null;
@@ -36,7 +39,7 @@ function Property({ property }) {
           <img src={picture} alt="apartment" />
         </div>
         <div>
-          <Link to="/properties/add">Add Review</Link>
+          <Link to={`/properties/${propertyId}/review`}>Add Review</Link>
         </div>
       </section>
     </>

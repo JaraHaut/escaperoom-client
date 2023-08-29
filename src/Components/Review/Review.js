@@ -8,7 +8,7 @@ function Review({ reviews }) {
       <div>
         {reviews.map((review) => {
           return (
-            <section key={review.id} className="review-card">
+            <section className="review-form" key={review.id} c>
               <p>Overall condition: {review.condition}</p>
               <p>Confort: {review.confort}</p>
               <p>Area safety: {review.safety}</p>
