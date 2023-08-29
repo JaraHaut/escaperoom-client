@@ -1,5 +1,5 @@
 import "./Property.scss";
-//import {Link} from react-router-dom;
+import { Link } from "react-router-dom";
 
 function Property({ property }) {
   console.log(property);
@@ -21,12 +21,12 @@ function Property({ property }) {
   return (
     <>
       <section className="property-details">
-        <h2>Property Details:</h2>
-        <p>Description:{title} </p>
+        <h2>Property Details</h2>
+        <p>{title} </p>
         <p>Address: {address}</p>
         <p>Post Code: {postcode}</p>
         <p>Letting Agent: {agency}</p>
-        <p>No. of bedrooms: {bedrooms}</p>
+        <p>No. bedrooms: {bedrooms}</p>
         <p>Reception: {reception ? "Yes" : "No"}</p>
         <p>Pets allowed: {pets ? "Yes" : "No"}</p>
         <p>
@@ -34,6 +34,9 @@ function Property({ property }) {
         </p>
         <div>
           <img src={picture} alt="apartment" />
+        </div>
+        <div>
+          <Link to="/properties/add">Add Review</Link>
         </div>
       </section>
     </>

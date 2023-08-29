@@ -11,9 +11,14 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<MainPage />} />
           <Route path="/properties" element={<MainPage />} />
           <Route
             path="/properties/:propertyId"
+            element={<PropertyDetailsPage />}
+          />
+          <Route
+            path="/properties/:propertyId/reviews"
             element={<PropertyDetailsPage />}
           />
           <Route path="/properties/add" element={<NewPropertyPage />} />
