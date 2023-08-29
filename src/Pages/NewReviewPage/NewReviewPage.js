@@ -15,14 +15,14 @@ function NewReviewPage() {
 
   const { propertyId } = useParams();
 
-  const [conditionError, setConditionError] = useState([]);
-  const [confortError, setConfortError] = useState([]);
-  const [safetyError, setSafetyError] = useState([]);
-  const [managementError, setManagementError] = useState([]);
-  const [commentsError, setCommentsError] = useState("");
-  const [priceError, setPriceError] = useState([]);
-  const [dateError, setDateError] = useState([]);
-  const [pictureError, setPictureError] = useState("");
+  const [conditionError, setConditionError] = useState(false);
+  const [confortError, setConfortError] = useState(false);
+  const [safetyError, setSafetyError] = useState(false);
+  const [managementError, setManagementError] = useState(false);
+  const [commentsError, setCommentsError] = useState(false);
+  const [priceError, setPriceError] = useState(false);
+  const [dateError, setDateError] = useState(false);
+  const [pictureError, setPictureError] = useState(false);
 
   //console.log(typeOf(safety)); //to check if this is an integer
 
@@ -63,6 +63,13 @@ function NewReviewPage() {
     event.preventDefault();
 
     console.log(typeof condition);
+    console.log(typeof confort);
+    console.log(typeof safety);
+    console.log(typeof management);
+    console.log(typeof comments);
+    console.log(typeof price);
+    console.log(typeof date);
+    console.log(typeof picture);
 
     //validation
     if (condition === "") {
@@ -205,11 +212,11 @@ function NewReviewPage() {
           value={comments}
           onChange={handleAddComments}
         />
-        <label htmlFor="price">Monthly rent (excluding bills)</label>
+        <label htmlFor="price">Monthly rent (excluding bills):</label>
         <input
           type="number"
           name="price"
-          placeholder=""
+          placeholder="Add the monthly rent in GBP"
           value={price}
           onChange={handleAddPrice}
         />
@@ -217,7 +224,7 @@ function NewReviewPage() {
         <input
           type="number"
           name="date"
-          placeholder=""
+          placeholder="Add year in YYYY format"
           value={date}
           onChange={handleAddDate}
         />
@@ -225,7 +232,7 @@ function NewReviewPage() {
         <input
           type="text"
           name="picture"
-          placeholder=""
+          placeholder="Upload your pictures"
           value={picture}
           onChange={handleAddPicture}
         />
