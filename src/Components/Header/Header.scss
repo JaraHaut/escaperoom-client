@@ -14,7 +14,7 @@
 
   @include tablet {
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
   }
 
   &__home {
@@ -26,7 +26,7 @@
     background-color: $secondary-button-puce;
     // border: 2px solid lightblue;
     border-radius: 5px;
-    margin: 0 1.6rem;
+    // margin: 0 1.6rem;
 
     @include logo-style;
     padding: 1.6rem;
@@ -59,7 +59,7 @@
     border-radius: 5px;
     width: 100%;
     padding: 1.6rem;
-    margin: 0 1.6rem;
+    // margin: 0 1.6rem;
     color: $secondary-text-light;
 
     @include tablet {
@@ -86,14 +86,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     background-color: $secondary-button-puce;
-    // border: 2px solid lightblue;
     border-radius: 5px;
     width: 100%;
     padding: 1.6rem;
-    margin: 0 1.6rem;
+    // margin: 0 1.6rem;
     color: $secondary-text-light;
+
     @include tablet {
       min-width: 10rem;
       max-width: 30rem;
@@ -116,12 +115,13 @@
     background-color: $secondary-button-puce;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     border-radius: 5px;
     width: 100%;
-    padding: 1.6rem;
-    margin: 0 1.6rem;
+    padding: 1.6rem 0;
+    margin: 0;
     color: $secondary-text-light;
 
     @include tablet {
@@ -129,8 +129,12 @@
       max-width: 30rem;
       height: 10rem;
     }
+
     &-icon {
-      text-decoration: none;
+      display: flex;
+
+      justify-content: center;
+
       font-size: 6rem;
     }
   }

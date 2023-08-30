@@ -1,3 +1,43 @@
+@use "../../Styles/partials/variables" as *;
+@use "../../Styles/partials/mixins" as *;
+
+.property-list {
+  padding: 1.6rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns */
+  grid-gap: 2rem;
+}
 .property-card {
-  border: 1px solid green;
+  border: 2px solid $primary-background-mountbattenpink;
+  border-radius: 5px;
+  padding: 1.6rem;
+  // margin: 1.6rem 0;
+  display: flex;
+  text-decoration: none;
+  justify-content: space-between;
+  // background-image: ;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  max-height: 36rem;
+  display: block;
+
+  &__title {
+    color: $primary-text-battleshipgray;
+    text-decoration: none;
+  }
+
+  &__data {
+    color: $primary-text-battleshipgray;
+    text-decoration: none;
+    // display: none;
+    // &:hover {
+    // }
+
+    &-wrapper {
+      text-decoration: none;
+    }
+  }
 }
