@@ -2,6 +2,7 @@ import "./NewReviewPage.scss";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import Header from "../../Components/Header/Header";
 
 function NewReviewPage() {
   const [condition, setCondition] = useState([]);
@@ -62,15 +63,7 @@ function NewReviewPage() {
   const handleReviewSubmit = (event) => {
     event.preventDefault();
 
-    // console.log(typeof condition);
-    // console.log(typeof confort);
-    // console.log(typeof safety);
-    // console.log(typeof management);
-    // console.log(typeof comments);
-    // console.log(typeof price);
-    // console.log(typeof date);
-    // console.log(typeof picture);
-    //calculate here the average
+    //Average rating of the review calculation
 
     const ratingArray = [
       Number(condition),
@@ -89,6 +82,8 @@ function NewReviewPage() {
     const averageRating = average(ratingArray);
     console.log(averageRating);
     console.log(typeof averageRating);
+
+    //Form validation
 
     if (condition === "") {
       console.log(condition);
@@ -135,6 +130,19 @@ function NewReviewPage() {
       }, 2000);
     }
 
+    if (
+      conditionError ||
+      confortError ||
+      safetyError ||
+      managementError ||
+      commentsError ||
+      priceError ||
+      dateError ||
+      pictureError
+    ) {
+      return;
+    }
+
     axios
       .post(
         `${process.env.REACT_APP_API_URL}/properties/${propertyId}/review`,
@@ -166,6 +174,8 @@ function NewReviewPage() {
 
   return (
     <>
+      <Header />
+
       <form className="review-form" onSubmit={handleReviewSubmit}>
         <label htmlFor="condition" className="review-form__label">
           Rate the overall condition of the property and furniture

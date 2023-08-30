@@ -1,6 +1,12 @@
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import AddCommentOutlinedIcon from "@mui/icons-material/AddCommentOutlined";
+import AddHomeWorkOutlinedIcon from "@mui/icons-material/AddHomeWorkOutlined";
+import BusinessOutlinedIcon from "@mui/icons-material/BusinessOutlined";
+import { AddHomeOutlined } from "@mui/icons-material";
+import AddHomeOutlinedIcon from "@mui/icons-material/AddHomeOutlined";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 
 function Header() {
   // console.log(typeof AccountCircleOutlinedIcon);
@@ -9,16 +15,34 @@ function Header() {
       <header className="header">
         <nav className="header-nav">
           <div className="header-nav__home">
-            <Link to="/properties">escaperoom</Link>
+            <Link className="header-nav__home-link" to="/properties">
+              {/* <div className="header-nav__home-icon">
+                <HomeOutlinedIcon fontSize="inherit" />
+              </div> */}
+              escaperoom
+            </Link>
           </div>
-          <div className="header-nav__link">
-            <Link to="/properties/agents">LETTING AGENTS</Link>
+          <div className="header-nav__agents">
+            <Link className="header-nav__agents-link" to="/properties/agents">
+              <div className="header-nav__agents-icon">
+                <BusinessOutlinedIcon fontSize="inherit" />
+              </div>
+              LETTING AGENTS
+            </Link>
           </div>
-          <div className="header-nav__link">
-            <Link to="/properties/add">ADD NEW LISTING</Link>
+          <div className="header-nav__newlisting">
+            <Link className="header-nav__newlisting-link" to="/properties/add">
+              <div className="header-nav__newlisting-icon">
+                <AddHomeOutlinedIcon fontSize="inherit" />
+              </div>
+              ADD NEW LISTING
+            </Link>
           </div>
           <div className="header-nav__login">
-            <AccountCircleOutlinedIcon />
+            <div className="header-nav__login-icon">
+              <AccountCircleOutlinedIcon fontSize="inherit" />
+            </div>
+            LOGIN
           </div>
         </nav>
       </header>

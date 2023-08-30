@@ -1,19 +1,14 @@
 @use "../../Styles/partials/variables" as *;
 @use "../../Styles/partials/mixins" as *;
 
-nav {
-  display: flex;
-  justify-content: space-evenly;
+.header {
+  width: 100%;
+  padding: 1.6rem;
 }
-
-div {
-  border: 1px solid #eee;
-}
-
 .header-nav {
   text-decoration: none;
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   justify-content: center;
   align-items: center;
 
@@ -23,20 +18,120 @@ div {
   }
 
   &__home {
-    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    background-color: $secondary-button-puce;
+    // border: 2px solid lightblue;
+    border-radius: 5px;
+    margin: 0 1.6rem;
+
     @include logo-style;
+    padding: 1.6rem;
+
+    @include tablet {
+      min-width: 10rem;
+      max-width: 30rem;
+      height: 10rem;
+    }
+    &-link {
+      text-decoration: none;
+      color: $secondary-text-light;
+    }
+    &-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 6rem;
+    }
   }
 
-  &__link {
-    color: cornflowerblue;
-    text-decoration: none;
-    border: 2px solid lightblue;
+  &__agents {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    background-color: $secondary-button-puce;
+    // border: 2px solid lightblue;
     border-radius: 5px;
     width: 100%;
     padding: 1.6rem;
+    margin: 0 1.6rem;
+    color: $secondary-text-light;
+
     @include tablet {
-      width: 20rem;
-      height: 5rem;
+      min-width: 10rem;
+      max-width: 30rem;
+      height: 10rem;
+    }
+
+    &-link {
+      text-decoration: none;
+      color: $secondary-text-light;
+    }
+
+    &-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 6rem;
+    }
+  }
+
+  &__newlisting {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: $secondary-button-puce;
+    // border: 2px solid lightblue;
+    border-radius: 5px;
+    width: 100%;
+    padding: 1.6rem;
+    margin: 0 1.6rem;
+    color: $secondary-text-light;
+    @include tablet {
+      min-width: 10rem;
+      max-width: 30rem;
+      height: 10rem;
+    }
+
+    &-link {
+      text-decoration: none;
+      color: $secondary-text-light;
+    }
+    &-icon {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 6rem;
+    }
+  }
+  &__login {
+    background-color: $secondary-button-puce;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+    width: 100%;
+    padding: 1.6rem;
+    margin: 0 1.6rem;
+    color: $secondary-text-light;
+
+    @include tablet {
+      min-width: 10rem;
+      max-width: 30rem;
+      height: 10rem;
+    }
+    &-icon {
+      text-decoration: none;
+      font-size: 6rem;
     }
   }
 }

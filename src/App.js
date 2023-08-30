@@ -5,7 +5,7 @@ import AgentPage from "./Pages/AgentPage/AgentPage";
 import NewPropertyPage from "./Pages/NewPropertyPage/NewPropertyPage";
 import NewReviewPage from "./Pages/NewReviewPage/NewReviewPage";
 import PropertyDetailsPage from "./Pages/PropertyDetailsPage/PropertyDetailsPage";
-import { FaStar } from "react-icons/fa";
+
 function App() {
   return (
     <>

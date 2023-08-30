@@ -12,6 +12,8 @@ function Review({ reviews }) {
     size: 50,
     value: rating,
     edit: false,
+    color: "black",
+    activeColor: "red",
   };
   return (
     <>
