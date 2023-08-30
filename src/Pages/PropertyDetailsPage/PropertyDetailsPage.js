@@ -5,6 +5,7 @@ import Review from "../../Components/Review/Review";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import ReactStars from "react-rating-stars-component";
 
 function PropertyDetailsPage() {
   const [property, setProperty] = useState([]);

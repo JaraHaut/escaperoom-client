@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 function Property({ property }) {
   const { propertyId } = useParams();
 
-  console.log(property);
   if (!property) {
     return null;
   }
@@ -21,6 +20,7 @@ function Property({ property }) {
     picture,
   } = property;
   console.log(property);
+
   return (
     <>
       <section className="property-details">

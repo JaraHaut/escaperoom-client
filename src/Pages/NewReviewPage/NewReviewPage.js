@@ -62,16 +62,34 @@ function NewReviewPage() {
   const handleReviewSubmit = (event) => {
     event.preventDefault();
 
-    console.log(typeof condition);
-    console.log(typeof confort);
-    console.log(typeof safety);
-    console.log(typeof management);
-    console.log(typeof comments);
-    console.log(typeof price);
-    console.log(typeof date);
-    console.log(typeof picture);
+    // console.log(typeof condition);
+    // console.log(typeof confort);
+    // console.log(typeof safety);
+    // console.log(typeof management);
+    // console.log(typeof comments);
+    // console.log(typeof price);
+    // console.log(typeof date);
+    // console.log(typeof picture);
+    //calculate here the average
 
-    //validation
+    const ratingArray = [
+      Number(condition),
+      Number(confort),
+      Number(safety),
+      Number(management),
+    ];
+    console.log(ratingArray);
+    function average(array) {
+      let sum = 0;
+      for (let i = 0; i < ratingArray.length; i++) {
+        sum += ratingArray[i];
+      }
+      return (sum / ratingArray.length).toFixed(2);
+    }
+    const averageRating = average(ratingArray);
+    console.log(averageRating);
+    console.log(typeof averageRating);
+
     if (condition === "") {
       console.log(condition);
       setConditionError(true);
@@ -129,6 +147,7 @@ function NewReviewPage() {
           price: price,
           date: date,
           picture: picture,
+          rating: averageRating, //here the error
         }
       )
       .catch((error) => {
@@ -147,11 +166,14 @@ function NewReviewPage() {
 
   return (
     <>
-      <form className="review-data" onSubmit={handleReviewSubmit}>
-        <label htmlFor="condition">Condition</label>
+      <form className="review-form" onSubmit={handleReviewSubmit}>
+        <label htmlFor="condition" className="review-form__label">
+          Rate the overall condition of the property and furniture
+        </label>
         <select
           name="condition"
           id="condition"
+          className="review-form__input"
           value={condition}
           onChange={handleAddCondition}
         >
@@ -162,10 +184,13 @@ function NewReviewPage() {
           <option value="5">5</option>
         </select>
 
-        <label htmlFor="confort">Confort</label>
+        <label htmlFor="confort" className="review-form__label">
+          Rate the overall confort (thermal, sound insulation, etc.)
+        </label>
         <select
           name="confort"
           id="confort"
+          className="review-form__input"
           value={confort}
           onChange={handleAddConfort}
         >
@@ -176,10 +201,13 @@ function NewReviewPage() {
           <option value="5">5</option>
         </select>
 
-        <label htmlFor="safety">Safety</label>
+        <label htmlFor="safety" className="review-form__label">
+          Rate how you perceived the safety of the area
+        </label>
         <select
           name="safety"
           id="safety"
+          className="review-form__input"
           value={safety}
           onChange={handleAddSafety}
         >
@@ -190,10 +218,13 @@ function NewReviewPage() {
           <option value="5">5</option>
         </select>
 
-        <label htmlFor="management">Management</label>
+        <label htmlFor="management" className="review-form__label">
+          Rate the property management by the landlord and/or letting agent:
+        </label>
         <select
           name="management"
           id="management"
+          className="review-form__input"
           value={management}
           onChange={handleAddManagement}
         >
@@ -204,39 +235,51 @@ function NewReviewPage() {
           <option value="5">5</option>
         </select>
 
-        <label htmlFor="comments">Tell us your experience</label>
+        <label htmlFor="comments" className="review-form__label">
+          Tell us your experience
+        </label>
         <input
           type="text"
           name="comments"
           placeholder="Add your opinion about the experience renting this property"
+          className="review-form__input"
           value={comments}
           onChange={handleAddComments}
         />
-        <label htmlFor="price">Monthly rent (excluding bills):</label>
+        <label htmlFor="price" className="review-form__label">
+          Monthly rent (excluding bills):
+        </label>
         <input
           type="number"
           name="price"
           placeholder="Add the monthly rent in GBP"
+          className="review-form__input"
           value={price}
           onChange={handleAddPrice}
         />
-        <label htmlFor="date">Last year living in this property</label>
+        <label htmlFor="date" className="review-form__label">
+          Last year living in this property
+        </label>
         <input
           type="number"
           name="date"
           placeholder="Add year in YYYY format"
+          className="review-form__input"
           value={date}
           onChange={handleAddDate}
         />
-        <label htmlFor="picture">Upload your pictures</label>
+        <label htmlFor="picture" className="review-form__label">
+          Upload your pictures
+        </label>
         <input
-          type="text"
+          type="url"
           name="picture"
           placeholder="Upload your pictures"
+          className="review-form__input"
           value={picture}
           onChange={handleAddPicture}
         />
-        <button>Add Review</button>
+        <button className="review-form__button">Add Review</button>
       </form>
     </>
   );

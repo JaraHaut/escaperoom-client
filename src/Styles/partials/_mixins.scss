@@ -1,2 +1,51 @@
 @use "./variables" as *;
 @use "./fonts";
+
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+//page header style
+@mixin h1-styles {
+  font-size: 2.8rem;
+  line-height: 3.6rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+
+  @include tablet {
+    font-size: 3.2rem;
+    line-height: 4rem;
+    font-weight: 600;
+  }
+}
+
+@mixin logo-style {
+  font-family: "Gopher";
+  text-decoration: none;
+  font-size: 2.8rem;
+  line-height: 3.6rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+
+  @include tablet {
+    font-size: 3.2rem;
+    line-height: 4rem;
+    font-weight: 600;
+  }
+}

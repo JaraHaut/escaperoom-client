@@ -1,3 +1,6 @@
+@use "../../Styles/partials/fonts" as *;
+@use "../../Styles/partials/mixins" as *;
+
 .review-form {
   display: flex;
   flex-direction: column;

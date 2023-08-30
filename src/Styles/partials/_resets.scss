@@ -1,0 +1,44 @@
+@use "./variables" as *;
+@use "./fonts";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 2.6rem;
+  margin: 0;
+  width: 100%;
+}
+
+h1 {
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 2.8rem;
+  line-height: 3.6rem;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+input,
+textarea,
+button {
+  font-family: inherit;
+}
+
+ul,
+li {
+  list-style: none;
+}

@@ -1,14 +1,28 @@
 import "./Review.scss";
+import ReactStars from "react-rating-stars-component";
+
 function Review({ reviews }) {
   if (!reviews || reviews.length === 0) {
     return <div className="">No reviews yet.</div>;
   }
+  console.log(reviews);
+  console.log(reviews[0].rating);
+  const rating = reviews[0].rating;
+  const readOnlyStars = {
+    size: 50,
+    value: rating,
+    edit: false,
+  };
   return (
     <>
       <div>
         {reviews.map((review) => {
           return (
-            <section className="review-form" key={review.id} c>
+            <section className="review-form" key={review.id}>
+              <div>
+                Overall rating:
+                <ReactStars {...readOnlyStars} /> {review.rating}
+              </div>
               <p>Overall condition: {review.condition}</p>
               <p>Confort: {review.confort}</p>
               <p>Area safety: {review.safety}</p>

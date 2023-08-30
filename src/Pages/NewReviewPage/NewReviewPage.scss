@@ -1,4 +1,19 @@
-.review-data {
+@use "../../Styles/partials/fonts" as *;
+@use "../../Styles/partials/mixins" as *;
+
+.review-form {
   display: flex;
   flex-direction: column;
+
+  &__label {
+    width: 100rem;
+  }
+
+  &__input {
+    width: 50rem;
+  }
+
+  &__button {
+    width: 50rem;
+  }
 }
