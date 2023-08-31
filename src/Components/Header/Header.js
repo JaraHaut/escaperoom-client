@@ -27,7 +27,7 @@ function Header() {
               <div className="header-nav__agents-icon">
                 <BusinessOutlinedIcon fontSize="inherit" />
               </div>
-              LETTING AGENTS
+              <p className="header-nav__text">LETTING AGENTS</p>
             </Link>
           </div>
           <div className="header-nav__newlisting">
@@ -35,14 +35,14 @@ function Header() {
               <div className="header-nav__newlisting-icon">
                 <AddHomeOutlinedIcon fontSize="inherit" />
               </div>
-              ADD NEW LISTING
+              <p className="header-nav__text">ADD NEW LISTING</p>
             </Link>
           </div>
           <div className="header-nav__login">
             <div className="header-nav__login-icon">
               <AccountCircleOutlinedIcon fontSize="inherit" />
             </div>
-            LOGIN
+            <p className="header-nav__text">LOGIN</p>
           </div>
         </nav>
       </header>
