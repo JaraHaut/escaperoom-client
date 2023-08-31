@@ -1,12 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {
-  getStorage,
-  ref,
-  collection,
-  getDocs,
-  uploadBytes,
-  getDownloadURL,
-} from "firebase/storage";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import "./NewReviewPage.scss";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
@@ -35,16 +28,16 @@ function NewReviewPage() {
   const [dateError, setDateError] = useState(false);
   const [pictureError, setPictureError] = useState(false);
 
-  //authentication to use firebase
-
+  //authentication to use firebase to upload a file to the cloud storage
   const firebaseConfig = {
-    apiKey: "AIzaSyDo4Bfrd8bmg89eJWhgr_naFmeRG4XtFNY",
-    authDomain: "escaperoom-de5f1.firebaseapp.com",
-    projectId: "escaperoom-de5f1",
-    storageBucket: "escaperoom-de5f1.appspot.com",
-    messagingSenderId: "541029304603",
-    appId: "1:541029304603:web:47c034d748def79afcebbe",
+    apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECTID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGEBUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGINGSENDERID,
+    appId: process.env.REACT_APP_FIREBASE_APPID,
   };
+
   //implementing functionality for uploading the image
   const app = initializeApp(firebaseConfig);
   const storage = getStorage(app, `gs://${firebaseConfig.storageBucket}`);
@@ -59,6 +52,7 @@ function NewReviewPage() {
     const url = await getDownloadURL(ref(storage, storageRef.fullPath));
     setImageUrl(url);
   };
+
   //this is the url of the uploaded image that will be used in the axios request
   console.log(imageUrl);
   //uploadImage(picture);
@@ -95,13 +89,12 @@ function NewReviewPage() {
     setPicture(event.target.files);
     // we add the uploaded picture
   };
-  console.log(picture);
+  //console.log(picture);
 
   const handleReviewSubmit = (event) => {
     event.preventDefault();
 
     //Average rating of the review calculation
-
     const ratingArray = [
       Number(condition),
       Number(confort),
@@ -119,8 +112,8 @@ function NewReviewPage() {
       return (sum / ratingArray.length).toFixed(2);
     }
     const averageRating = average(ratingArray);
-    console.log(averageRating);
-    console.log(typeof averageRating);
+    // console.log(averageRating);
+    // console.log(typeof averageRating);
 
     //Form validation
 

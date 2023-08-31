@@ -2,6 +2,9 @@ import "./PropertyCard.scss";
 import { Link } from "react-router-dom";
 
 function PropertyCard({ properties }) {
+  //need to add average rating here (algorithm and stars)
+  //get request to the db to fetch the average rating of each review
+
   if (!properties) {
     return <div className="">No properties available.</div>;
   }
