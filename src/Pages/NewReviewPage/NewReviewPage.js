@@ -1,3 +1,12 @@
+import { initializeApp } from "firebase/app";
+import {
+  getStorage,
+  ref,
+  collection,
+  getDocs,
+  uploadBytes,
+  getDownloadURL,
+} from "firebase/storage";
 import "./NewReviewPage.scss";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
@@ -13,6 +22,7 @@ function NewReviewPage() {
   const [price, setPrice] = useState([]);
   const [date, setDate] = useState([]);
   const [picture, setPicture] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
   const { propertyId } = useParams();
 
@@ -25,7 +35,33 @@ function NewReviewPage() {
   const [dateError, setDateError] = useState(false);
   const [pictureError, setPictureError] = useState(false);
 
-  //console.log(typeOf(safety)); //to check if this is an integer
+  //authentication to use firebase
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDo4Bfrd8bmg89eJWhgr_naFmeRG4XtFNY",
+    authDomain: "escaperoom-de5f1.firebaseapp.com",
+    projectId: "escaperoom-de5f1",
+    storageBucket: "escaperoom-de5f1.appspot.com",
+    messagingSenderId: "541029304603",
+    appId: "1:541029304603:web:47c034d748def79afcebbe",
+  };
+  //implementing functionality for uploading the image
+  const app = initializeApp(firebaseConfig);
+  const storage = getStorage(app, `gs://${firebaseConfig.storageBucket}`);
+  const uploadImage = async (imageFile) => {
+    const storageRef = ref(storage, `${imageFile[0].name}`);
+
+    try {
+      await uploadBytes(storageRef, imageFile[0]);
+    } catch (error) {
+      console.log(error);
+    }
+    const url = await getDownloadURL(ref(storage, storageRef.fullPath));
+    setImageUrl(url);
+  };
+  //this is the url of the uploaded image that will be used in the axios request
+  console.log(imageUrl);
+  //uploadImage(picture);
 
   const handleAddCondition = (event) => {
     setCondition(event.target.value);
@@ -56,9 +92,10 @@ function NewReviewPage() {
     // console.log(setDate);
   };
   const handleAddPicture = (event) => {
-    setPicture(event.target.value);
-    // console.log(setPicture);
+    setPicture(event.target.files);
+    // we add the uploaded picture
   };
+  console.log(picture);
 
   const handleReviewSubmit = (event) => {
     event.preventDefault();
@@ -71,6 +108,8 @@ function NewReviewPage() {
       Number(safety),
       Number(management),
     ];
+
+    //showing rating with stars (only read)
     console.log(ratingArray);
     function average(array) {
       let sum = 0;
@@ -142,6 +181,8 @@ function NewReviewPage() {
     ) {
       return;
     }
+    //we call the function to upload the image within the scope of the handleReviewSubmit function, before the axios request
+    uploadImage(picture);
 
     axios
       .post(
@@ -154,8 +195,8 @@ function NewReviewPage() {
           comments: comments,
           price: price,
           date: date,
-          picture: picture,
-          rating: averageRating, //here the error
+          picture: imageUrl, //here we send the url of the uploaded image
+          rating: averageRating,
         }
       )
       .catch((error) => {
@@ -171,7 +212,11 @@ function NewReviewPage() {
     setDate("");
     setPicture("");
   };
-
+  //this to test only the upload fiile function, to be removed
+  const handleDummySubmit = (e) => {
+    e.preventDefault();
+    uploadImage(picture);
+  };
   return (
     <>
       <Header />
@@ -282,13 +327,14 @@ function NewReviewPage() {
           Upload your pictures
         </label>
         <input
-          type="url"
+          type="file"
           name="picture"
-          placeholder="Upload your pictures"
-          className="review-form__input"
-          value={picture}
+          id="picture"
+          accept="image/png, image/jpeg"
           onChange={handleAddPicture}
+          // value={picture}
         />
+
         <button className="review-form__button">Add Review</button>
       </form>
     </>
