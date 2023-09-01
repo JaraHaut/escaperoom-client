@@ -27,6 +27,7 @@ function App() {
             element={<NewReviewPage />}
           />
           <Route path="/agencies" element={<AgentPage />} />
+          <Route path="/agencies/:agency" element={<AgentPage />} />
         </Routes>
       </BrowserRouter>
     </>

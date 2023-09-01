@@ -10,7 +10,7 @@ function AgentList({ agencies }) {
         {agencies.map((agency) => (
           <li key={agency.id}>
             {/* Use Link to navigate to AgentDetails with the agency's ID as a URL parameter */}
-            <Link to={`/agencies/${agency.id}`}>{agency.name}</Link>
+            <Link to={`/agencies/${agency}`}>{agency}</Link>
           </li>
         ))}
       </ul>
