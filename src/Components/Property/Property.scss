@@ -1,0 +1,20 @@
+@use "../../Styles/partials/variables" as *;
+@use "../../Styles/partials/mixins" as *;
+
+.property-details {
+  padding: 1.6rem;
+
+  width: 100%;
+  background-color: $secondary-background-thistle;
+  margin: 1.6rem;
+  border-radius: 5px;
+
+  &__data {
+    display: flex;
+    justify-content: space-between;
+
+    &-container {
+      padding-left: 1.6rem;
+    }
+  }
+}
