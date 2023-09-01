@@ -179,20 +179,17 @@ function NewReviewPage() {
     uploadImage(picture);
 
     axios
-      .post(
-        `${process.env.REACT_APP_API_URL}/properties/${propertyId}/review`,
-        {
-          condition: condition,
-          confort: confort,
-          safety: safety,
-          management: management,
-          comments: comments,
-          price: price,
-          date: date,
-          picture: imageUrl, //here we send the url of the uploaded image
-          rating: averageRating,
-        }
-      )
+      .post(`${process.env.REACT_APP_API_URL}/reviews/${propertyId}/review`, {
+        condition: condition,
+        confort: confort,
+        safety: safety,
+        management: management,
+        comments: comments,
+        price: price,
+        date: date,
+        picture: imageUrl, //here we send the url of the uploaded image
+        rating: averageRating,
+      })
       .catch((error) => {
         console.log(error);
         console.error(`Error adding review to property with id ${propertyId}`);

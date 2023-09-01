@@ -20,21 +20,21 @@ function PropertyDetailsPage() {
       console.log(property.data);
       setProperty(property.data);
     } catch (error) {
-      console.error(`Error fecthing property with id ${propertyId}`);
+      console.error(`Error fetching property with id ${propertyId}`);
     }
   };
 
   const getAllReviews = async () => {
     try {
       const reviews = await axios.get(
-        `${process.env.REACT_APP_API_URL}/properties/${propertyId}/reviews`
+        `${process.env.REACT_APP_API_URL}/reviews/${propertyId}/reviews`
       );
       console.log(reviews.data);
       setReviews(reviews.data);
     } catch (error) {
       console.log(error);
       console.error(
-        `Error fecthing reviews for property with id ${propertyId}`
+        `Error fetching reviews for property with id ${propertyId}`
       );
     }
   };

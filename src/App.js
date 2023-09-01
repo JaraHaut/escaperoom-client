@@ -18,15 +18,15 @@ function App() {
             element={<PropertyDetailsPage />}
           />
           <Route
-            path="/properties/:propertyId/reviews"
+            path="/reviews/:propertyId/reviews"
             element={<PropertyDetailsPage />}
           />
           <Route path="/properties/add" element={<NewPropertyPage />} />
           <Route
-            path="/properties/:propertyId/review"
+            path="/reviews/:propertyId/review"
             element={<NewReviewPage />}
           />
-          <Route path="/properties/agents" element={<AgentPage />} />
+          <Route path="/agencies" element={<AgentPage />} />
         </Routes>
       </BrowserRouter>
     </>

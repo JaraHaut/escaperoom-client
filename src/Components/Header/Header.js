@@ -23,7 +23,7 @@ function Header() {
             </Link>
           </div>
           <div className="header-nav__agents">
-            <Link className="header-nav__agents-link" to="/properties/agents">
+            <Link className="header-nav__agents-link" to="/agencies">
               <div className="header-nav__agents-icon">
                 <BusinessOutlinedIcon fontSize="inherit" />
               </div>
