@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import Header from "../../Components/Header/Header";
+import { average } from "../../Lib/average";
 
 function NewReviewPage() {
   const [condition, setCondition] = useState([]);
@@ -104,13 +105,13 @@ function NewReviewPage() {
 
     //showing rating with stars (only read)
     console.log(ratingArray);
-    function average(array) {
-      let sum = 0;
-      for (let i = 0; i < ratingArray.length; i++) {
-        sum += ratingArray[i];
-      }
-      return (sum / ratingArray.length).toFixed(2);
-    }
+    // function average(array) {
+    //   let sum = 0;
+    //   for (let i = 0; i < ratingArray.length; i++) {
+    //     sum += ratingArray[i];
+    //   }
+    //   return (sum / ratingArray.length).toFixed(2);
+    // }
     const averageRating = average(ratingArray);
     // console.log(averageRating);
     // console.log(typeof averageRating);

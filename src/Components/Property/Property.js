@@ -1,9 +1,18 @@
 import "./Property.scss";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { average } from "../../Lib/average";
 
-function Property({ property }) {
+function Property({ property, reviews }) {
   const { propertyId } = useParams();
+
+  console.log(reviews);
+  // console.log(reviews[0].rating);
+  // console.log(reviews[1].rating);
+  let ratingArray = reviews.map(({ rating }) => rating);
+  console.log(ratingArray);
+  const averageRating = average(ratingArray);
+  console.log(averageRating);
 
   if (!property) {
     return null;
@@ -44,6 +53,7 @@ function Property({ property }) {
               {outdoor ? "Yes" : "No"}
             </p>
           </div>
+          <div>overall rating: {averageRating}</div>
         </div>
         <div>
           <Link to={`/properties/${propertyId}/review`}>Add Review</Link>
