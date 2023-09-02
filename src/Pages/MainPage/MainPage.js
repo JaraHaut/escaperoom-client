@@ -1,6 +1,7 @@
 import "./MainPage.scss";
 import Header from "../../Components/Header/Header";
 import PropertyCard from "../../Components/PropertyCard/PropertyCard";
+import Hero from "../../Components/Hero/Hero";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -27,6 +28,7 @@ function MainPage() {
   return (
     <>
       <Header />
+      <Hero />
       <PropertyCard properties={properties} />
     </>
   );

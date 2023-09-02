@@ -1,0 +1,48 @@
+@use "../../Styles/partials/variables" as *;
+@use "../../Styles/partials/mixins" as *;
+
+.hero {
+  padding: 1.6rem;
+  height: 40rem;
+
+  &__img {
+    border-radius: 5px;
+    background-image: url("../../Assets/Images/landscape2medium.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 30rem;
+    -webkit-mask-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 1)),
+      to(rgba(0, 0, 0, 0))
+    );
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    filter: grayscale(100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  &__text-wrapper {
+    z-index: 2;
+    position: relative; /* Add this to position it above the gradient */
+    padding: 1rem;
+    top: -12rem;
+  }
+
+  &__title {
+    @include logo-style;
+    opacity: 100%;
+    color: $color5;
+    z-index: 2; /* Place it above the gradient */
+  }
+
+  &__description {
+    color: $color3;
+  }
+}

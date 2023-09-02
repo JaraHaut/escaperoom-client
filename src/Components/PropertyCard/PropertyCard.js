@@ -15,12 +15,16 @@ function PropertyCard({ properties }) {
           return (
             <>
               {" "}
-              <Link to={`/properties/${property.id}`} key={property.id}>
+              <Link
+                to={`/properties/${property.id}`}
+                key={property.id}
+                style={{ textDecoration: "none" }}
+              >
                 <section
                   className="property-card"
                   style={{ backgroundImage: `url(${property.picture})` }}
                 >
-                  <div className="property-card__data-wrapper">
+                  <div className="property-card__wrapper">
                     <h2 className="property-card__title">{property.title} </h2>
                     <p className="property-card__data">
                       Post Code: {property.postcode}
@@ -31,7 +35,7 @@ function PropertyCard({ properties }) {
                     <p className="property-card__data">
                       No. bedrooms: {property.bedrooms}
                     </p>
-                    <p className="property-card__data">{property.id}</p>
+
                     <p className="property-card__data">Property Rating </p>
                   </div>
                   {/* <div className="property-card__img">
