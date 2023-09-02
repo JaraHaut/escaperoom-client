@@ -34,10 +34,14 @@ function Property({ property, reviews }) {
   return (
     <>
       <section className="property-details">
-        <h2>Property Details</h2>
+        <h2 className="property-details__title">Property Details</h2>
         <div className="property-details__data">
           <div className="property-details__image-container">
-            <img src={picture} alt="apartment" />
+            <img
+              src={picture}
+              alt="apartment"
+              className="property-details__image"
+            />
           </div>
 
           <div className="property-details__data-container">

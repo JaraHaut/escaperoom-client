@@ -3,18 +3,31 @@
 
 .property-details {
   padding: 1.6rem;
-
-  width: 100%;
-  background-color: $secondary-background-thistle;
+  // background-color: $color1;
   margin: 1.6rem;
   border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
+  &__title {
+    @include logo-style;
+    color: $color2;
+  }
   &__data {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+    }
 
     &-container {
       padding-left: 1.6rem;
     }
+  }
+
+  &__image {
+    padding-top: 2rem;
+    width: 25rem;
   }
 }

@@ -27,14 +27,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    width: 10rem;
-    height: 6.2rem;
-    background-color: $secondary-button-puce;
+    width: 25%;
+    height: 5rem;
+    background-color: $secondary-text-light;
     border-radius: 5px;
+    border: 2px solid $color2;
     @include logo-style;
     padding: 1.6rem;
     font-size: 1.8rem;
+
+    &:hover {
+      background-color: $color4;
+      color: $secondary-text-light;
+      border: none;
+    }
 
     @include tablet {
       min-width: 10rem;
@@ -43,10 +49,18 @@
       width: 80%;
       margin-right: 1.6rem;
     }
+
     &-link {
       text-decoration: none;
-      color: $secondary-text-light;
+      color: $color1;
+
+      &:hover {
+        background-color: $color4;
+        color: $secondary-text-light;
+        border: none;
+      }
     }
+
     &-icon {
       display: flex;
       flex-direction: column;
@@ -61,14 +75,18 @@
     align-items: center;
     justify-content: center;
     color: black;
-    background-color: $secondary-button-puce;
-    // border: 2px solid lightblue;
+    background-color: $secondary-text-light;
+    border: 2px solid $color2;
     border-radius: 5px;
-    width: 10rem;
-    height: 6.2rem;
+    width: 25%;
+    height: 5rem;
     padding: 1.6rem;
-    // margin: 0 1.6rem;
-    color: $secondary-text-light;
+
+    &:hover {
+      background-color: $color4;
+      color: $secondary-text-light;
+      border: none;
+    }
 
     @include tablet {
       min-width: 10rem;
@@ -80,7 +98,13 @@
 
     &-link {
       text-decoration: none;
-      color: $secondary-text-light;
+      color: $color1;
+
+      &:hover {
+        background-color: $color4;
+        color: $secondary-text-light;
+        border: none;
+      }
     }
 
     &-icon {
@@ -96,13 +120,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $secondary-button-puce;
+    background-color: $secondary-text-light;
+    border: 2px solid $color2;
     border-radius: 5px;
-    width: 10rem;
-    height: 6.2rem;
+    width: 25%;
+    height: 5rem;
     padding: 1.6rem;
-    // margin: 0 1.6rem;
-    color: $secondary-text-light;
+
+    &:hover {
+      background-color: $color4;
+      color: $secondary-text-light;
+      border: none;
+    }
 
     @include tablet {
       min-width: 10rem;
@@ -114,8 +143,15 @@
 
     &-link {
       text-decoration: none;
-      color: $secondary-text-light;
+      color: $color1;
+
+      &:hover {
+        background-color: $color4;
+        color: $secondary-text-light;
+        border: none;
+      }
     }
+
     &-icon {
       display: flex;
       flex-direction: column;
@@ -124,19 +160,27 @@
       font-size: 6rem;
     }
   }
+
   &__login {
-    background-color: $secondary-button-puce;
+    background-color: $secondary-text-light;
+    border: 2px solid $color2;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    width: 10rem;
-    height: 6.2rem;
+    width: 25%;
+    height: 5rem;
     padding: 1.6rem 0;
     margin: 0;
-    color: $secondary-text-light;
+    color: $color1;
+
+    &:hover {
+      background-color: $color4;
+      color: $secondary-text-light;
+      border: none;
+    }
 
     @include tablet {
       min-width: 10rem;
@@ -147,9 +191,7 @@
 
     &-icon {
       display: flex;
-
       justify-content: center;
-
       font-size: 6rem;
     }
   }
