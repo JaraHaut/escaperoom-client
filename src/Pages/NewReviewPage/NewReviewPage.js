@@ -4,8 +4,11 @@ import "./NewReviewPage.scss";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
 import Header from "../../Components/Header/Header";
 import { average } from "../../Lib/average";
+import PhotoCameraFrontOutlinedIcon from "@mui/icons-material/PhotoCameraFrontOutlined";
 
 function NewReviewPage() {
   const [condition, setCondition] = useState([]);
@@ -28,6 +31,8 @@ function NewReviewPage() {
   const [priceError, setPriceError] = useState(false);
   const [dateError, setDateError] = useState(false);
   const [pictureError, setPictureError] = useState(false);
+
+  const [success, setSuccess] = useState(false);
 
   //authentication to use firebase to upload a file to the cloud storage
   const firebaseConfig = {
@@ -92,7 +97,7 @@ function NewReviewPage() {
   };
   //console.log(picture);
 
-  const handleReviewSubmit = (event) => {
+  const handleReviewSubmit = async (event) => {
     event.preventDefault();
 
     //Average rating of the review calculation
@@ -175,60 +180,132 @@ function NewReviewPage() {
     ) {
       return;
     }
+
+    console.log(
+      "input values",
+      condition,
+      confort,
+      safety,
+      management,
+      comments,
+      price,
+      date,
+      imageUrl,
+      averageRating
+    );
     //we call the function to upload the image within the scope of the handleReviewSubmit function, before the axios request
     uploadImage(picture);
+    try {
+      const app = initializeApp(firebaseConfig);
+      const storage = getStorage(app, `gs://${firebaseConfig.storageBucket}`);
+      console.log("imageFile:", `${picture[0].name}`);
+      const storageRef = ref(storage, `${picture[0].name}`);
+      console.log(storageRef);
+      await uploadBytes(storageRef, picture[0]);
+      const imageUrl = await getDownloadURL(ref(storage, storageRef.fullPath));
+      setImageUrl(imageUrl);
+      console.log(imageUrl);
 
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/reviews/${propertyId}/review`, {
-        condition: condition,
-        confort: confort,
-        safety: safety,
-        management: management,
-        comments: comments,
-        price: price,
-        date: date,
-        picture: imageUrl, //here we send the url of the uploaded image
-        rating: averageRating,
-      })
-      .catch((error) => {
-        console.log(error);
-        console.error(`Error adding review to property with id ${propertyId}`);
-      });
-    setCondition("");
-    setConfort("");
-    setSafety("");
-    setManagement("");
-    setComments("");
-    setPrice("");
-    setDate("");
-    setPicture("");
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/reviews/${propertyId}/review`,
+        {
+          condition: condition,
+          confort: confort,
+          safety: safety,
+          management: management,
+          comments: comments,
+          price: price,
+          date: date,
+          picture: imageUrl, //here we send the url of the uploaded image
+          rating: averageRating,
+        }
+      );
+
+      console.log("Review added successfully", response.data);
+      setCondition("");
+      setConfort("");
+      setSafety("");
+      setManagement("");
+      setComments("");
+      setPrice("");
+      setDate("");
+      setPicture("");
+      setSuccess(true);
+    } catch (error) {
+      console.log(error);
+      console.error(`Error adding the review`);
+    }
   };
+
+  //   axios
+  //     .post(`${process.env.REACT_APP_API_URL}/reviews/${propertyId}/review`, {
+  //       condition: condition,
+  //       confort: confort,
+  //       safety: safety,
+  //       management: management,
+  //       comments: comments,
+  //       price: price,
+  //       date: date,
+  //       picture: imageUrl, //here we send the url of the uploaded image
+  //       rating: averageRating,
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       console.error(`Error adding review to property with id ${propertyId}`);
+  //     });
+  //   setCondition("");
+  //   setConfort("");
+  //   setSafety("");
+  //   setManagement("");
+  //   setComments("");
+  //   setPrice("");
+  //   setDate("");
+  //   setPicture("");
+  // };
   //this to test only the upload fiile function, to be removed
-  const handleDummySubmit = (e) => {
-    e.preventDefault();
-    uploadImage(picture);
-  };
+  // const handleDummySubmit = (e) => {
+  //   e.preventDefault();
+  //   uploadImage(picture);
+  // };
   return (
     <>
       <Header />
+      <div className="review__title-container">
+        <h2 className="review__title">New Review to Property</h2>
+      </div>
 
       <form className="review-form" onSubmit={handleReviewSubmit}>
         <label htmlFor="condition" className="review-form__label">
           Rate the overall condition of the property and furniture
         </label>
-        <select
-          name="condition"
-          id="condition"
-          className="review-form__input"
-          value={condition}
-          onChange={handleAddCondition}
-        >
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
+        <div className="review-form__select">
+          <select
+            name="condition"
+            id="condition"
+            className="review-form__input"
+            value={condition}
+            onChange={handleAddCondition}
+          >
+            <option value="none" className="review-form_option">
+              Select a Value
+            </option>
+            <option value="1" selected className="review-form_option">
+              1
+            </option>
+            <option value="2" className="review-form__option">
+              2
+            </option>
+            <option value="3" className="review-form__option">
+              3
+            </option>
+            <option value="4" className="review-form__option">
+              4
+            </option>
+            <option value="5" className="review-form__option">
+              5
+            </option>
+          </select>
+        </div>
 
         <label htmlFor="confort" className="review-form__label">
           Rate the overall confort (thermal, sound insulation, etc.)
@@ -237,14 +314,29 @@ function NewReviewPage() {
           name="confort"
           id="confort"
           className="review-form__input"
+          defaultValue={"1"}
+          placeholder="Choose a value from 1 to 5"
           value={confort}
           onChange={handleAddConfort}
         >
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
+          <option value="none" className="review-form_option">
+            Select a Value
+          </option>
+          <option value="1" selected className="review-form_option">
+            1
+          </option>
+          <option value="2" className="review-form_option">
+            2
+          </option>
+          <option value="3" className="review-form_option">
+            3
+          </option>
+          <option value="4" className="review-form_option">
+            4
+          </option>
+          <option value="5" className="review-form_option">
+            5
+          </option>
         </select>
 
         <label htmlFor="safety" className="review-form__label">
@@ -257,11 +349,24 @@ function NewReviewPage() {
           value={safety}
           onChange={handleAddSafety}
         >
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
+          <option value="none" className="review-form_option">
+            Select a Value
+          </option>
+          <option value="1" selected className="review-form_option">
+            1
+          </option>
+          <option value="2" className="review-form_option">
+            2
+          </option>
+          <option value="3" className="review-form_option">
+            3
+          </option>
+          <option value="4" className="review-form_option">
+            4
+          </option>
+          <option value="5" className="review-form_option">
+            5
+          </option>
         </select>
 
         <label htmlFor="management" className="review-form__label">
@@ -274,11 +379,24 @@ function NewReviewPage() {
           value={management}
           onChange={handleAddManagement}
         >
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
+          <option value="none" className="review-form_option">
+            Select a Value
+          </option>
+          <option value="1" selected className="review-form_option">
+            1
+          </option>
+          <option value="2" className="review-form_option">
+            2
+          </option>
+          <option value="3" className="review-form_option">
+            3
+          </option>
+          <option value="4" className="review-form_option">
+            4
+          </option>
+          <option value="5" className="review-form_option">
+            5
+          </option>
         </select>
 
         <label htmlFor="comments" className="review-form__label">
@@ -293,7 +411,7 @@ function NewReviewPage() {
           onChange={handleAddComments}
         />
         <label htmlFor="price" className="review-form__label">
-          Monthly rent (excluding bills):
+          Monthly rent (excluding bills)
         </label>
         <input
           type="number"
@@ -314,8 +432,11 @@ function NewReviewPage() {
           value={date}
           onChange={handleAddDate}
         />
-        <label htmlFor="picture" className="review-form__label">
+        <label htmlFor="picture" className="review-form__label-file">
           Upload your pictures
+          <div className="review-form__label-icon">
+            <PhotoCameraFrontOutlinedIcon fontSize="inherit" />
+          </div>
         </label>
         <input
           type="file"
@@ -323,11 +444,21 @@ function NewReviewPage() {
           id="picture"
           accept="image/png, image/jpeg"
           onChange={handleAddPicture}
+          className="review-form__input-file"
           // value={picture}
         />
 
         <button className="review-form__button">Add Review</button>
       </form>
+
+      {success && (
+        <div className="review-form__success-message">
+          Your review has been successfully added!
+          <Link to={`/properties/${propertyId}`} className="review-form__link">
+            View Review
+          </Link>
+        </div>
+      )}
     </>
   );
 }

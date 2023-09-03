@@ -21,10 +21,6 @@ function Review({ reviews }) {
         {reviews.map((review) => {
           return (
             <section className="review-form" key={review.id}>
-              <div className="review-form__rating">
-                User Rating: {review.rating}
-                <ReactStars {...readOnlyStars} />
-              </div>
               <div className="review-form__container">
                 <div className="review-form__data-container">
                   <div className="review-form__data">
@@ -57,12 +53,15 @@ function Review({ reviews }) {
                     <p className="review-form__value">{review.date}</p>
                   </div>
                   <div className="review-form__image-container">
-                    User Pictures:{" "}
                     <img
                       className="review-form__image"
                       src={review.picture}
                       alt="flat interiors"
                     />
+                    <div className="review-form__rating">
+                      User Rating: {review.rating}
+                      <ReactStars {...readOnlyStars} />
+                    </div>
                   </div>
                 </div>
                 <div className="review-form__experience">

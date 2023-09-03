@@ -37,7 +37,7 @@ function Property({ property, reviews }) {
     color: "#f7c1bb",
     activeColor: "#885151",
   };
-
+  console.log(readOnlyStars);
   return (
     <>
       <section className="property-details">
@@ -58,24 +58,24 @@ function Property({ property, reviews }) {
             <h3 className="property-details__card-title">{title} </h3>
             <div className="property-details__card-data">
               <div className="property-details__card-key">
-                <p className="property-details__data">Address: </p>
-                <p className="property-details__data">Postcode: </p>
-                <p className="property-details__data">Letting Agent:</p>
-                <p className="property-details__data">Bedrooms:</p>
-                <p className="property-details__data">Reception:</p>
-                <p className="property-details__data">Pets allowed:</p>
-                <p className="property-details__data">Outdoor spaces:</p>
+                <p className="property-details__key">Address: </p>
+                <p className="property-details__key">Postcode: </p>
+                <p className="property-details__key">Letting Agent:</p>
+                <p className="property-details__key">Bedrooms:</p>
+                <p className="property-details__key">Reception:</p>
+                <p className="property-details__key">Pets allowed:</p>
+                <p className="property-details__key">Outdoor spaces:</p>
               </div>
               <div className="property-details__card-value">
-                <p className="property-details__data">{address}</p>
-                <p className="property-details__data">{postcode}</p>
-                <p className="property-details__data">{agency}</p>
-                <p className="property-details__data">{bedrooms}</p>
-                <p className="property-details__data">
+                <p className="property-details__value">{address}</p>
+                <p className="property-details__value">{postcode}</p>
+                <p className="property-details__value">{agency}</p>
+                <p className="property-details__value">{bedrooms}</p>
+                <p className="property-details__value">
                   {reception ? "Yes" : "No"}
                 </p>
-                <p className="property-details__data">{pets ? "Yes" : "No"}</p>
-                <p className="property-details__data">
+                <p className="property-details__value">{pets ? "Yes" : "No"}</p>
+                <p className="property-details__value">
                   {" "}
                   {outdoor ? "Yes" : "No"}
                 </p>
@@ -85,7 +85,7 @@ function Property({ property, reviews }) {
         </div>
         <div className="property-details__addreview">
           <Link
-            to={`/properties/${propertyId}/review`}
+            to={`/reviews/${propertyId}/review`}
             className="property-details__addreview-button"
           >
             Add Review

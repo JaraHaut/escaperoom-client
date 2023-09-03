@@ -66,6 +66,10 @@
     @include tablet {
       width: 25rem;
     }
+
+    @include tablet {
+      min-width: 30rem;
+    }
   }
 
   &__card-title {
@@ -73,8 +77,12 @@
     width: 100%;
   }
 
-  &__data {
+  &__key {
     @include h4-styles;
+  }
+
+  &__value {
+    @include h3-styles;
   }
 
   &__rating {

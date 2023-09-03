@@ -232,6 +232,7 @@ function NewPropertyPage() {
       const imageUrl = await getDownloadURL(ref(storage, storageRef.fullPath));
       setImageUrl(imageUrl);
       console.log(imageUrl);
+
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/properties/add`,
         {
