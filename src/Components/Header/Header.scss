@@ -19,10 +19,12 @@
 
   &__text {
     display: none;
+
     @include tablet {
       display: flex;
     }
   }
+
   &__home {
     display: flex;
     align-items: center;
@@ -66,7 +68,11 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-size: 6rem;
+      font-size: 4rem;
+
+      @include tablet {
+        font-size: 6rem;
+      }
     }
   }
 
@@ -112,7 +118,11 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-size: 6rem;
+      font-size: 4rem;
+
+      @include tablet {
+        font-size: 6rem;
+      }
     }
   }
 
@@ -157,7 +167,11 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-size: 6rem;
+      font-size: 4rem;
+
+      @include tablet {
+        font-size: 6rem;
+      }
     }
   }
 
@@ -192,7 +206,11 @@
     &-icon {
       display: flex;
       justify-content: center;
-      font-size: 6rem;
+      font-size: 4rem;
+
+      @include tablet {
+        font-size: 6rem;
+      }
     }
   }
 }

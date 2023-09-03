@@ -35,32 +35,54 @@ function Property({ property, reviews }) {
     <>
       <section className="property-details">
         <h2 className="property-details__title">Property Details</h2>
-        <div className="property-details__data">
+        <div className="property-details__card">
           <div className="property-details__image-container">
             <img
               src={picture}
               alt="apartment"
               className="property-details__image"
             />
+            <div className="property-details__rating">
+              overall rating: {averageRating}
+            </div>
           </div>
 
           <div className="property-details__data-container">
-            <h3>{title} </h3>
-            <p>Address: {address}</p>
-            <p>Post Code: {postcode}</p>
-            <p>Letting Agent: {agency}</p>
-            <p>No. bedrooms: {bedrooms}</p>
-            <p>Reception: {reception ? "Yes" : "No"}</p>
-            <p>Pets allowed: {pets ? "Yes" : "No"}</p>
-            <p>
-              Outdoor spaces (balcony, terrace, garden):{" "}
-              {outdoor ? "Yes" : "No"}
-            </p>
+            <h3 className="property-details__card-title">{title} </h3>
+            <div className="div3">
+              <div className="div1">
+                <p className="property-details__data">Address: </p>
+                <p className="property-details__data">Postcode: </p>
+                <p className="property-details__data">Letting Agent:</p>
+                <p className="property-details__data">No. bedrooms:</p>
+                <p className="property-details__data">Reception:</p>
+                <p className="property-details__data">Pets allowed:</p>
+                <p className="property-details__data">Outdoor spaces:</p>
+              </div>
+              <div className="div2">
+                <p className="property-details__data">{address}</p>
+                <p className="property-details__data">{postcode}</p>
+                <p className="property-details__data">{agency}</p>
+                <p className="property-details__data">{bedrooms}</p>
+                <p className="property-details__data">
+                  {reception ? "Yes" : "No"}
+                </p>
+                <p className="property-details__data">{pets ? "Yes" : "No"}</p>
+                <p className="property-details__data">
+                  {" "}
+                  {outdoor ? "Yes" : "No"}
+                </p>
+              </div>
+            </div>
           </div>
-          <div>overall rating: {averageRating}</div>
         </div>
-        <div>
-          <Link to={`/properties/${propertyId}/review`}>Add Review</Link>
+        <div className="property-details__addreview">
+          <Link
+            to={`/properties/${propertyId}/review`}
+            className="property-details__addreview-button"
+          >
+            Add Review
+          </Link>
         </div>
       </section>
     </>

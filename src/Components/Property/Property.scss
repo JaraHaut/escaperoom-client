@@ -2,6 +2,8 @@
 @use "../../Styles/partials/mixins" as *;
 
 .property-details {
+  display: flex;
+  flex-direction: column;
   padding: 1.6rem;
   // background-color: $color1;
   margin: 1.6rem;
@@ -11,8 +13,9 @@
   &__title {
     @include logo-style;
     color: $color2;
+    padding-bottom: 1.6rem;
   }
-  &__data {
+  &__card {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -20,14 +23,74 @@
     @include tablet {
       flex-direction: row;
     }
-
-    &-container {
-      padding-left: 1.6rem;
-    }
   }
 
   &__image {
-    padding-top: 2rem;
-    width: 25rem;
+    border-radius: 5px;
+    width: 100%;
+
+    @include tablet {
+      width: 25rem;
+    }
+  }
+
+  &__card-title {
+    margin-top: 0;
+    width: 100%;
+  }
+
+  &__data {
+    @include h3-styles;
+
+    &-container {
+      border: 1px solid red;
+      width: 100%;
+
+      @include tablet {
+        padding-left: 1.6rem;
+      }
+    }
+  }
+
+  &__addreview {
+    background-color: $color2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    margin-top: 1.6rem;
+    &:hover {
+      background-color: $color4;
+    }
+    &-button {
+      text-decoration: none;
+      color: $secondary-text-light;
+    }
+  }
+}
+
+.div1 {
+  display: inline-block;
+  min-width: 7rem;
+  @include tablet {
+    display: inline-block;
+    min-width: 20rem;
+  }
+}
+.div2 {
+  display: inline-block;
+  min-width: 7rem;
+  @include tablet {
+    display: inline-block;
+    min-width: 20rem;
+  }
+}
+
+.div3 {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid blue;
+
+  @include tablet {
   }
 }

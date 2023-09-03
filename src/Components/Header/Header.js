@@ -19,7 +19,7 @@ function Header() {
               {/* <div className="header-nav__home-icon">
                 <HomeOutlinedIcon fontSize="inherit" />
               </div> */}
-              escape<br></br>room
+              escape room
             </Link>
           </div>
           <div className="header-nav__agents">
