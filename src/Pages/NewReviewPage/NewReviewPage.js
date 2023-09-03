@@ -11,13 +11,13 @@ import { average } from "../../Lib/average";
 import PhotoCameraFrontOutlinedIcon from "@mui/icons-material/PhotoCameraFrontOutlined";
 
 function NewReviewPage() {
-  const [condition, setCondition] = useState([]);
-  const [confort, setConfort] = useState([]);
-  const [safety, setSafety] = useState([]);
-  const [management, setManagement] = useState([]);
+  const [condition, setCondition] = useState("");
+  const [confort, setConfort] = useState("");
+  const [safety, setSafety] = useState("");
+  const [management, setManagement] = useState("");
   const [comments, setComments] = useState("");
-  const [price, setPrice] = useState([]);
-  const [date, setDate] = useState([]);
+  const [price, setPrice] = useState("");
+  const [date, setDate] = useState("");
   const [picture, setPicture] = useState("");
   const [imageUrl, setImageUrl] = useState("");
 
@@ -142,32 +142,24 @@ function NewReviewPage() {
     if (comments === "") {
       console.log(comments);
       setCommentsError(true);
-      setTimeout(() => {
-        setCommentsError(false);
-      }, 2000);
     }
     if (price === "") {
       console.log(price);
       setPriceError(true);
-      setTimeout(() => {
-        setPriceError(false);
-      }, 2000);
     }
     if (date === "") {
       console.log(date);
       setDateError(true);
-      setTimeout(() => {
-        setDateError(false);
-      }, 2000);
     }
     if (picture === "") {
       console.log(picture);
       setPictureError(true);
-      setTimeout(() => {
-        setPictureError(false);
-      }, 2000);
     }
 
+    if (!imageUrl || picture.length === 0) {
+      setPictureError(true);
+      return;
+    }
     if (
       conditionError ||
       confortError ||
@@ -178,8 +170,9 @@ function NewReviewPage() {
       dateError ||
       pictureError
     ) {
-      return;
+      return <p className="error-message">Please fill al the fields.</p>;
     }
+    // Check if a picture has been selected
 
     console.log(
       "input values",
@@ -195,6 +188,7 @@ function NewReviewPage() {
     );
     //we call the function to upload the image within the scope of the handleReviewSubmit function, before the axios request
     uploadImage(picture);
+
     try {
       const app = initializeApp(firebaseConfig);
       const storage = getStorage(app, `gs://${firebaseConfig.storageBucket}`);
@@ -216,7 +210,7 @@ function NewReviewPage() {
           comments: comments,
           price: price,
           date: date,
-          picture: imageUrl, //here we send the url of the uploaded image
+          picture: imageUrl,
           rating: averageRating,
         }
       );
@@ -271,41 +265,45 @@ function NewReviewPage() {
     <>
       <Header />
       <div className="review__title-container">
-        <h2 className="review__title">New Review to Property</h2>
+        <h2 className="review__title">Add your Review</h2>
       </div>
 
       <form className="review-form" onSubmit={handleReviewSubmit}>
         <label htmlFor="condition" className="review-form__label">
           Rate the overall condition of the property and furniture
         </label>
-        <div className="review-form__select">
-          <select
-            name="condition"
-            id="condition"
-            className="review-form__input"
-            value={condition}
-            onChange={handleAddCondition}
-          >
-            <option value="none" className="review-form_option">
-              Select a Value
-            </option>
-            <option value="1" selected className="review-form_option">
-              1
-            </option>
-            <option value="2" className="review-form__option">
-              2
-            </option>
-            <option value="3" className="review-form__option">
-              3
-            </option>
-            <option value="4" className="review-form__option">
-              4
-            </option>
-            <option value="5" className="review-form__option">
-              5
-            </option>
-          </select>
-        </div>
+
+        <select
+          name="condition"
+          id="condition"
+          className={`review-form__input ${
+            conditionError ? "review-form__input--error" : ""
+          }`}
+          value={condition}
+          onChange={handleAddCondition}
+        >
+          <option value="none" className="review-form__option">
+            Select a Value
+          </option>
+          <option value="1" className="review-form__option">
+            1
+          </option>
+          <option value="2" className="review-form__option">
+            2
+          </option>
+          <option value="3" className="review-form__option">
+            3
+          </option>
+          <option value="4" className="review-form__option">
+            4
+          </option>
+          <option value="5" className="review-form__option">
+            5
+          </option>
+        </select>
+        {conditionError && (
+          <p className="error-message">Please select a condition rating.</p>
+        )}
 
         <label htmlFor="confort" className="review-form__label">
           Rate the overall confort (thermal, sound insulation, etc.)
@@ -313,8 +311,9 @@ function NewReviewPage() {
         <select
           name="confort"
           id="confort"
-          className="review-form__input"
-          defaultValue={"1"}
+          className={`review-form__input ${
+            confortError ? "review-form__input--error" : ""
+          }`}
           placeholder="Choose a value from 1 to 5"
           value={confort}
           onChange={handleAddConfort}
@@ -322,7 +321,7 @@ function NewReviewPage() {
           <option value="none" className="review-form_option">
             Select a Value
           </option>
-          <option value="1" selected className="review-form_option">
+          <option value="1" className="review-form_option">
             1
           </option>
           <option value="2" className="review-form_option">
@@ -338,21 +337,25 @@ function NewReviewPage() {
             5
           </option>
         </select>
-
+        {confortError && (
+          <p className="error-message">Please select a confort rating.</p>
+        )}
         <label htmlFor="safety" className="review-form__label">
           Rate how you perceived the safety of the area
         </label>
         <select
           name="safety"
           id="safety"
-          className="review-form__input"
+          className={`review-form__input ${
+            safetyError ? "review-form__input--error" : ""
+          }`}
           value={safety}
           onChange={handleAddSafety}
         >
           <option value="none" className="review-form_option">
             Select a Value
           </option>
-          <option value="1" selected className="review-form_option">
+          <option value="1" className="review-form_option">
             1
           </option>
           <option value="2" className="review-form_option">
@@ -368,21 +371,25 @@ function NewReviewPage() {
             5
           </option>
         </select>
-
+        {safetyError && (
+          <p className="error-message">Please select a safety rating.</p>
+        )}
         <label htmlFor="management" className="review-form__label">
           Rate the property management by the landlord and/or letting agent:
         </label>
         <select
           name="management"
           id="management"
-          className="review-form__input"
+          className={`review-form__input ${
+            managementError ? "review-form__input--error" : ""
+          }`}
           value={management}
           onChange={handleAddManagement}
         >
           <option value="none" className="review-form_option">
             Select a Value
           </option>
-          <option value="1" selected className="review-form_option">
+          <option value="1" className="review-form_option">
             1
           </option>
           <option value="2" className="review-form_option">
@@ -398,6 +405,9 @@ function NewReviewPage() {
             5
           </option>
         </select>
+        {managementError && (
+          <p className="error-message">Please select a management rating.</p>
+        )}
 
         <label htmlFor="comments" className="review-form__label">
           Tell us your experience
@@ -406,21 +416,32 @@ function NewReviewPage() {
           type="text"
           name="comments"
           placeholder="Add your opinion about the experience renting this property"
-          className="review-form__input"
+          className={`review-form__input ${
+            commentsError ? "review-form__input--error" : null
+          }`}
           value={comments}
           onChange={handleAddComments}
         />
+        {commentsError && (
+          <p className="error-message">Please add your comments.</p>
+        )}
+
         <label htmlFor="price" className="review-form__label">
           Monthly rent (excluding bills)
         </label>
+
         <input
           type="number"
           name="price"
           placeholder="Add the monthly rent in GBP"
-          className="review-form__input"
+          className={`review-form__input ${
+            priceError ? "review-form__input--error" : ""
+          }`}
           value={price}
           onChange={handleAddPrice}
         />
+        {priceError && <p className="error-message">Please share the rent.</p>}
+
         <label htmlFor="date" className="review-form__label">
           Last year living in this property
         </label>
@@ -428,10 +449,14 @@ function NewReviewPage() {
           type="number"
           name="date"
           placeholder="Add year in YYYY format"
-          className="review-form__input"
+          className={`review-form__input ${
+            dateError ? "review-form__input--error" : null
+          }`}
           value={date}
           onChange={handleAddDate}
         />
+        {dateError && <p className="error-message">Please add the date.</p>}
+
         <label htmlFor="picture" className="review-form__label-file">
           Upload your pictures
           <div className="review-form__label-icon">
@@ -444,9 +469,13 @@ function NewReviewPage() {
           id="picture"
           accept="image/png, image/jpeg"
           onChange={handleAddPicture}
-          className="review-form__input-file"
-          // value={picture}
+          className={`review-form__input-file ${
+            pictureError ? "review-form__input--error" : ""
+          }`}
         />
+        {pictureError && (
+          <p className="error-message">Please upload a picture.</p>
+        )}
 
         <button className="review-form__button">Add Review</button>
       </form>
