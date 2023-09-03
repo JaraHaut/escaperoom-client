@@ -63,6 +63,19 @@
     font-weight: 400;
   }
 }
+@mixin h4-styles {
+  color: $color4;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  font-weight: 600;
+  padding: 0.5rem 0;
+
+  @include tablet {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    font-weight: 600;
+  }
+}
 
 @mixin logo-style {
   font-family: "Gopher";

@@ -4,4 +4,58 @@
 .review-form {
   display: flex;
   flex-direction: column;
+  padding: 1.6rem;
+  margin: 1.6rem;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  &__rating {
+    @include h3-styles;
+    line-height: 3rem;
+    padding: 1.6rem 0;
+
+    @include tablet {
+      line-height: 3rem;
+      padding: 1.6rem 0;
+    }
+  }
+
+  &__data {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__key {
+    @include h4-styles;
+  }
+
+  &__container {
+    display: flex;
+    padding-top: 1.6rem;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__data-container {
+    min-width: 25rem;
+  }
+
+  &__image {
+    width: 25rem;
+    border-radius: 5px;
+    padding-top: 1.6rem;
+
+    &-container {
+      @include h4-styles;
+    }
+  }
+  &__experience {
+    @include h3-styles;
+    @include tablet {
+      padding-left: 1.6rem;
+    }
+  }
 }

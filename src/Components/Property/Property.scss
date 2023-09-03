@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: column;
   padding: 1.6rem;
-  // background-color: $color1;
   margin: 1.6rem;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -15,6 +14,7 @@
     color: $color2;
     padding-bottom: 1.6rem;
   }
+
   &__card {
     display: flex;
     justify-content: space-between;
@@ -22,6 +22,40 @@
 
     @include tablet {
       flex-direction: row;
+    }
+
+    &-container {
+      width: 100%;
+
+      @include tablet {
+        padding-left: 1.6rem;
+      }
+    }
+
+    &-data {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-key {
+      display: inline-block;
+      min-width: 9rem;
+      padding-right: 1.6rem;
+
+      @include tablet {
+        display: inline-block;
+        min-width: 20rem;
+      }
+    }
+
+    &-value {
+      display: inline-block;
+      min-width: 9rem;
+
+      @include tablet {
+        display: inline-block;
+        min-width: 20rem;
+      }
     }
   }
 
@@ -40,15 +74,17 @@
   }
 
   &__data {
+    @include h4-styles;
+  }
+
+  &__rating {
     @include h3-styles;
+    line-height: 3rem;
+    padding: 1.6rem 0;
 
-    &-container {
-      border: 1px solid red;
-      width: 100%;
-
-      @include tablet {
-        padding-left: 1.6rem;
-      }
+    @include tablet {
+      line-height: 3rem;
+      padding: 1.6rem 0;
     }
   }
 
@@ -59,9 +95,11 @@
     justify-content: center;
     border-radius: 5px;
     margin-top: 1.6rem;
+
     &:hover {
       background-color: $color4;
     }
+
     &-button {
       text-decoration: none;
       color: $secondary-text-light;
@@ -69,28 +107,29 @@
   }
 }
 
-.div1 {
-  display: inline-block;
-  min-width: 7rem;
-  @include tablet {
-    display: inline-block;
-    min-width: 20rem;
-  }
-}
-.div2 {
-  display: inline-block;
-  min-width: 7rem;
-  @include tablet {
-    display: inline-block;
-    min-width: 20rem;
-  }
-}
+// .div1 {
+//   display: inline-block;
+//   min-width: 7rem;
 
-.div3 {
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid blue;
+//   @include tablet {
+//     display: inline-block;
+//     min-width: 20rem;
+//   }
+// }
+// .div2 {
+//   display: inline-block;
+//   min-width: 7rem;
 
-  @include tablet {
-  }
-}
+//   @include tablet {
+//     display: inline-block;
+//     min-width: 20rem;
+//   }
+// }
+
+// .div3 {
+//   display: flex;
+//   justify-content: space-between;
+
+//   @include tablet {
+//   }
+// }

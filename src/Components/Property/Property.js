@@ -2,6 +2,7 @@ import "./Property.scss";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { average } from "../../Lib/average";
+import ReactStars from "react-rating-stars-component";
 
 function Property({ property, reviews }) {
   const { propertyId } = useParams();
@@ -28,8 +29,14 @@ function Property({ property, reviews }) {
     outdoor,
     picture,
   } = property;
-  //console.log(property);
-  console.log(picture);
+
+  const readOnlyStars = {
+    size: 30,
+    value: averageRating,
+    edit: false,
+    color: "#f7c1bb",
+    activeColor: "#885151",
+  };
 
   return (
     <>
@@ -43,23 +50,23 @@ function Property({ property, reviews }) {
               className="property-details__image"
             />
             <div className="property-details__rating">
-              overall rating: {averageRating}
+              Overall Rating: {averageRating} <ReactStars {...readOnlyStars} />
             </div>
           </div>
 
-          <div className="property-details__data-container">
+          <div className="property-details__card-container">
             <h3 className="property-details__card-title">{title} </h3>
-            <div className="div3">
-              <div className="div1">
+            <div className="property-details__card-data">
+              <div className="property-details__card-key">
                 <p className="property-details__data">Address: </p>
                 <p className="property-details__data">Postcode: </p>
                 <p className="property-details__data">Letting Agent:</p>
-                <p className="property-details__data">No. bedrooms:</p>
+                <p className="property-details__data">Bedrooms:</p>
                 <p className="property-details__data">Reception:</p>
                 <p className="property-details__data">Pets allowed:</p>
                 <p className="property-details__data">Outdoor spaces:</p>
               </div>
-              <div className="div2">
+              <div className="property-details__card-value">
                 <p className="property-details__data">{address}</p>
                 <p className="property-details__data">{postcode}</p>
                 <p className="property-details__data">{agency}</p>
