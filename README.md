@@ -1,70 +1,120 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# EscapeRoom
 
-## Available Scripts
+EscapeRoom is an online platform where the tenants can share their experiences about renting or viewing a property. This social-oriented app aims to have an impact in the rental market by adding transparency and bringing accountability to landlords and letting agents.
 
-In the project directory, you can run:
+Renting a property in highly competitive markets such as London has become an extreme sport. Tenants usually are the weakest part of this deal, risking their deposit and their rights to a safe home, while the landlords and agencies speculate with property values with very little accountability. This app brings back some leverage to the tenants so they can rate the experience of renting certain properties with certain landlords and agencies. This will bring transparency and balance to an unregulated and unfair market.
 
-### `npm start`
+Anyone, tenants, agencies and landlords can use this platform. Tenants can create and publish a property in order to reflect their personal opinions. Also, agencies and landlords can do the same to use it as an advert for their property. They can also give feedback about certain opinions published on their properties. This will attract "ethical" rentals, which will see their value increased by the positive opinions of past/present tenants.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Technologies used in this project:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React
+- CSS & Sass
+- HTML & JSX
+- Firebase for Cloud Storage
+- REST API
+- Axios
+- Express.js
+- Node.js
+- MySQL
+- Knex
 
-### `npm test`
+## Screenshots
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Follow these steps to run a local instance of EscapeRoom. You'll need node, npm and MySQL already installed.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone or download this repo:
 
-### `npm run eject`
+https://github.com/JaraHaut/escaperoom-client
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+https://github.com/JaraHaut/escaperoom-server
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Set up the backend:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Create a new database in MySQL called ```escaperoom```.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Install server dependencies:
 
-## Learn More
+	Run ```npm install``` from inside the server directory;
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+	```
+	$ cd escaperoom-server
+	$ npm install
+	```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Run migrations:
 
-### Code Splitting
+```
+$ npm run migrate
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+5. Run seeds:
 
-### Analyzing the Bundle Size
+```
+$ npm run seeds
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+6. Set environment variables:
 
-### Making a Progressive Web App
+	Rename ```.env_example``` to ```.env``` and change the placeholder values with your own:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+	```
+	PORT=<PORT_NUMER>
+	DB_USER=<YOUR DB USERNAME>
+	DB_PASSWORD=<YOUR DB PASSWORD>
+	DB_HOST=<HOST ADDRESS>
+	DB_NAME=<DB NAME> 
+	``` 
 
-### Advanced Configuration
+7. Start the server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+$ node server.js
+$ npm start
+```
 
-### Deployment
+Set up the frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+8. Install client dependencies:
+	Run ```npm install``` from inside the client directory:
 
-### `npm run build` fails to minify
+	```
+	$ cd escaperoom-client
+	$ npm install
+	```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+9. Set environment variables:
+Rename ```.env.example``` to ```.env``` and change the placeholder value to the port you set for the server.
+
+	
+	REACT_APP_API_URL=http://localhost:<PORT SET IN /server/.env>
+	
+
+10. Start the React app:
+	
+	```
+	$ npm start
+	```
+
+## Authors
+
+- Jara Haut-Vacas - https://github.com/JaraHaut
+## 🔗 Links
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jarahaut/)
+
+
+
+## Acknowledgements
+
+ - To my incredible teachers and classmates of the BrainStation Bootcamp Cohort June 2023 London.
+ - To my partner in life, Luigi, for the huge support during this challenging period of my life.
+ - To my cats, especially Sombra :-)
+
+
