@@ -10,7 +10,7 @@ function AgentList({ agencies }) {
     <section className="agency-list">
       <div className="agency-list__wrapper">
         <div className="agency-list__title-wrapper">
-          <h2 className="agency-list__title">List of Agencies</h2>
+          <h2 className="agency-list__title">List of Letting Agents'</h2>
         </div>
         <div className="agency-list__list-container">
           <ul className="agency-list__list">
