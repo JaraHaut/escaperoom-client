@@ -4,8 +4,19 @@
 .agency-details {
   padding: 1.6rem;
   margin: 1.6rem;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 0 auto;
+
+  @include tablet {
+    max-width: 102rem;
+    margin: 0 auto;
+  }
+
+  &__wrapper {
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    @include tablet {
+    }
+  }
 
   &__title {
     @include logo-style;
@@ -22,7 +33,7 @@
   }
 
   &__list {
-    @include h2-styles;
+    @include h3-styles;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -30,6 +41,8 @@
 
     @include tablet {
       flex-direction: row;
+      width: 100%;
+      margin: 0 auto;
     }
 
     &-item {
@@ -40,9 +53,12 @@
       margin: 1.6rem;
       text-align: center;
       border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
       &:hover {
-        background-color: $color1;
+        background-color: $color6;
       }
     }
   }
@@ -50,5 +66,12 @@
   &__link {
     text-decoration: none;
     color: $color3;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
   }
 }

@@ -66,39 +66,36 @@ function NewPropertyPage() {
   // console.log(imageUrl);
   const handleAddTitle = (event) => {
     setTitle(event.target.value);
-    console.log(setTitle);
+    setTitleError(false);
   };
   const handleAddAddress = (event) => {
     setAddress(event.target.value);
-    console.log(setAddress);
+    setAddressError(false);
   };
   const handleAddPostcode = (event) => {
     setPostcode(event.target.value);
-    console.log(setPostcode);
+    setPostcodeError(false);
   };
   const handleAddAgency = (event) => {
     setAgency(event.target.value);
-    console.log(setAgency);
+    setAgencyError(false);
   };
   const handleAddBedrooms = (event) => {
     setBedrooms(event.target.value);
-    console.log(setBedrooms);
+    setBedroomsError(false);
   };
   const handleAddReception = (event) => {
     setReception(event.target.value);
     setIsCheckedReception(!isCheckedReception);
-    console.log(setReception);
   };
 
   const handleAddPets = (event) => {
     setPets(event.target.value);
     setIsCheckedPets(!isCheckedPets);
-    console.log(setPets);
   };
   const handleAddOutdoor = (event) => {
     setOutdoor(event.target.value);
     setIsCheckedOutdoor(!isCheckedOutdoor);
-    console.log(setOutdoor);
   };
   const handleAddPicture = (event) => {
     setPicture(event.target.files);
@@ -115,50 +112,25 @@ function NewPropertyPage() {
 
     //add validation
     if (title === "") {
-      console.log(title);
       setTitleError(true);
     }
 
     if (address === "") {
-      console.log(address);
       setAddressError(true);
     }
 
     if (postcode === "") {
-      console.log(postcode);
       setPostcodeError(true);
     }
 
     if (agency === "") {
-      console.log(agency);
       setAgencyError(true);
     }
 
     if (bedrooms === "") {
-      console.log(bedrooms);
       setBedroomsError(true);
     }
 
-    // if (reception === "") {
-    //   console.log(reception);
-    //   setReceptionError(true);
-    // }
-
-    // if (pets === "") {
-    //   console.log(pets);
-    //   setPetsError(true);
-    // }
-
-    // if (outdoor === "") {
-    //   console.log(outdoor);
-    //   setOutdoorError(true);
-    // }
-
-    // if (picture === "") {
-    //   console.log(picture);
-    //   setPictureError(true);
-    // }
-    //console.log(picture[0].name);
     if (!picture) {
       setPictureError(true);
 
@@ -208,7 +180,7 @@ function NewPropertyPage() {
       const app = initializeApp(firebaseConfig);
       const storage = getStorage(app, `gs://${firebaseConfig.storageBucket}`);
       console.log("imageFile:", `${picture[0].name}`);
-      const storageRef = ref(storage, `${picture[0].name}`);
+      const storageRef = ref(storage, `property_${picture[0].name}`);
       console.log(storageRef);
 
       await uploadBytes(storageRef, picture[0]);

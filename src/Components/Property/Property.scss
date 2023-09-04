@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: column;
   padding: 1.6rem;
-  margin: 1.6rem;
 
   @include tablet {
     max-width: 102rem;
@@ -35,8 +34,13 @@
 
     &-container {
       width: 100%;
+      background-color: $color6;
+      border-radius: 5px;
+      height: 100%;
 
       @include tablet {
+        margin-left: 1.6rem;
+        margin-top: 1.6rem;
         padding-left: 1.6rem;
       }
     }
@@ -44,14 +48,12 @@
     &-data {
       display: flex;
       justify-content: space-between;
-      border: 1px solid red;
     }
 
     &-key {
       display: inline-block;
       min-width: 9rem;
       padding-right: 1.6rem;
-      border: 1px solid blue;
 
       @include tablet {
         display: inline-block;
@@ -62,7 +64,6 @@
     &-value {
       display: inline-block;
       min-width: 9rem;
-      border: 1px solid blue;
 
       @include tablet {
         display: inline-block;
@@ -76,11 +77,10 @@
     width: 100%;
 
     @include tablet {
+      margin-top: 1.6rem;
     }
 
     &-container {
-      border: 1px solid blue;
-
       @include tablet {
         width: 100%;
       }
@@ -128,30 +128,3 @@
     }
   }
 }
-
-// .div1 {
-//   display: inline-block;
-//   min-width: 7rem;
-
-//   @include tablet {
-//     display: inline-block;
-//     min-width: 20rem;
-//   }
-// }
-// .div2 {
-//   display: inline-block;
-//   min-width: 7rem;
-
-//   @include tablet {
-//     display: inline-block;
-//     min-width: 20rem;
-//   }
-// }
-
-// .div3 {
-//   display: flex;
-//   justify-content: space-between;
-
-//   @include tablet {
-//   }
-// }

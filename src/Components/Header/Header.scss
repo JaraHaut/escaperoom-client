@@ -40,9 +40,10 @@
     @include logo-style;
     padding: 1.6rem;
     font-size: 1.8rem;
+    line-height: 1.8rem;
 
     &:hover {
-      background-color: $color4;
+      background-color: $color2;
       color: $secondary-text-light;
       border: none;
     }
@@ -60,7 +61,7 @@
       color: $color1;
 
       &:hover {
-        background-color: $color4;
+        background-color: $color2;
         color: $secondary-text-light;
         border: none;
       }
@@ -92,7 +93,7 @@
     padding: 1.6rem;
 
     &:hover {
-      background-color: $color4;
+      background-color: $color2;
       color: $secondary-text-light;
       border: none;
     }
@@ -110,7 +111,7 @@
       color: $color1;
 
       &:hover {
-        background-color: $color4;
+        background-color: $color2;
         color: $secondary-text-light;
         border: none;
       }
@@ -141,7 +142,7 @@
     padding: 1.6rem;
 
     &:hover {
-      background-color: $color4;
+      background-color: $color2;
       color: $secondary-text-light;
       border: none;
     }
@@ -159,7 +160,7 @@
       color: $color1;
 
       &:hover {
-        background-color: $color4;
+        background-color: $color2;
         color: $secondary-text-light;
         border: none;
       }
@@ -194,7 +195,7 @@
     color: $color1;
 
     &:hover {
-      background-color: $color4;
+      background-color: $color2;
       color: $secondary-text-light;
       border: none;
     }

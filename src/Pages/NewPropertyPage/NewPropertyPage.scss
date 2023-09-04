@@ -3,6 +3,7 @@
 
 .property__title {
   @include logo-style;
+  color: $color2;
   &-container {
     padding: 1.6rem;
   }
@@ -16,21 +17,25 @@
   font-size: 1.4rem;
   display: flex;
   flex-direction: column;
-
+  width: 100%;
   padding: 1.6rem;
-  margin: 1.6rem;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  // margin: 1.6rem;
+
   // align-items: center;
   // justify-content: center;
 
   @include tablet {
     max-width: 102rem;
+    margin: 0 auto;
   }
+
   &__wrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
+    padding: 1.6rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
     @include tablet {
       max-width: 102rem;
@@ -42,6 +47,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    @include tablet {
+      max-width: 102rem;
+      margin: 0 auto;
+    }
   }
 
   &__label {

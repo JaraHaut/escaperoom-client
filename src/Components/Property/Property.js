@@ -12,8 +12,8 @@ function Property({ property, reviews }) {
   // console.log(reviews[1].rating);
   let ratingArray = reviews.map(({ rating }) => rating);
   console.log(ratingArray);
-  const averageRating = average(ratingArray);
-  console.log(averageRating);
+  const averageRating = Number(average(ratingArray));
+  console.log(typeof averageRating);
 
   if (!property) {
     return null;

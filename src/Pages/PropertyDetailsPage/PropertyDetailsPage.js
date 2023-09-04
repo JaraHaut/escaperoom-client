@@ -1,7 +1,7 @@
 import "./PropertyDetailsPage.scss";
 import Header from "../../Components/Header/Header";
 import Property from "../../Components/Property/Property";
-import Review from "../../Components/Review/Review";
+import ReviewCard from "../../Components/ReviewCard/ReviewCard";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -49,7 +49,7 @@ function PropertyDetailsPage() {
       <Header />
 
       <Property property={property[0]} reviews={reviews} />
-      <Review reviews={reviews} />
+      <ReviewCard reviews={reviews} />
     </>
   );
 }

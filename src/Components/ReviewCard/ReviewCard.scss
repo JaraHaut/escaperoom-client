@@ -1,7 +1,7 @@
-@use "../../Styles/partials/fonts" as *;
+@use "../../Styles/partials/variables" as *;
 @use "../../Styles/partials/mixins" as *;
 
-.review-form {
+.review-card {
   display: flex;
   flex-direction: column;
   padding: 1.6rem;
@@ -9,16 +9,15 @@
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-bottom: 1.6rem;
+
   @include tablet {
     max-width: 102rem;
-    margin: 0 auto;
   }
 
   &__wrapper {
     @include tablet {
       max-width: 102rem;
       margin: 0 auto;
-      padding: 1.6rem;
     }
   }
 
@@ -55,11 +54,11 @@
   }
 
   &__data-container {
-    border: 1px solid blue;
     // min-width: 25rem;
 
     @include tablet {
-      width: 50%;
+      width: 70%;
+      height: 100%;
     }
   }
 
@@ -79,10 +78,13 @@
   }
   &__experience {
     @include h3-styles;
+    background-color: $color6;
+    border-radius: 5px;
     @include tablet {
-      width: 50rem;
+      width: 100%;
 
-      padding-left: 1.6rem;
+      padding: 0 1.6rem;
+      margin-left: 1.6rem;
     }
   }
 }
