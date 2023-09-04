@@ -56,7 +56,9 @@ function AgentDetails() {
                       className="agency-details__img"
                     />
                   </Link>
-                  <h3 className="agency-details__subtitle">{property.title}</h3>
+                  <h3 className="agency-details__property-title">
+                    {property.title}
+                  </h3>
                 </li>
               ))}
             </ul>
