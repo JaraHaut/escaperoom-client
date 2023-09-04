@@ -1,6 +1,4 @@
 import "./Hero.scss";
-import landscape1 from "../../Assets/Images/landscape1.jpg";
-import flat1 from "../../Assets/Images/flat1.jpeg";
 
 function Hero() {
   return (

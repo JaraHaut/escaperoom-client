@@ -12,7 +12,7 @@
 
   &__img {
     border-radius: 5px;
-    background-image: url("../../Assets/Images/landscape2medium.jpg");
+    background-image: url("../../Assets/Images/hero_landscape.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -35,12 +35,12 @@
 
   &__text-wrapper {
     z-index: 2;
-    position: relative; /* Add this to position it above the gradient */
+    position: relative;
     padding: 1rem;
     top: -25rem;
     @include tablet {
       z-index: 2;
-      position: relative; /* Add this to position it above the gradient */
+      position: relative;
       padding: 1rem;
       top: -12rem;
     }
@@ -50,7 +50,7 @@
     @include logo-style;
     opacity: 100%;
     color: $secondary-text;
-    z-index: 2; /* Place it above the gradient */
+    z-index: 2;
   }
 
   &__description {
