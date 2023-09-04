@@ -6,6 +6,11 @@
   &-container {
     padding: 1.6rem;
   }
+
+  @include tablet {
+    max-width: 102rem;
+    margin: 0 auto;
+  }
 }
 
 .review-form {

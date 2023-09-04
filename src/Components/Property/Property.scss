@@ -6,8 +6,17 @@
   flex-direction: column;
   padding: 1.6rem;
   margin: 1.6rem;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  @include tablet {
+    max-width: 102rem;
+    margin: 0 auto;
+  }
+
+  &__wrapper {
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 1.6rem;
+  }
 
   &__title {
     @include logo-style;
@@ -35,12 +44,14 @@
     &-data {
       display: flex;
       justify-content: space-between;
+      border: 1px solid red;
     }
 
     &-key {
       display: inline-block;
       min-width: 9rem;
       padding-right: 1.6rem;
+      border: 1px solid blue;
 
       @include tablet {
         display: inline-block;
@@ -51,6 +62,7 @@
     &-value {
       display: inline-block;
       min-width: 9rem;
+      border: 1px solid blue;
 
       @include tablet {
         display: inline-block;
@@ -64,14 +76,16 @@
     width: 100%;
 
     @include tablet {
-      width: 25rem;
     }
 
-    @include tablet {
-      min-width: 30rem;
+    &-container {
+      border: 1px solid blue;
+
+      @include tablet {
+        width: 100%;
+      }
     }
   }
-
   &__card-title {
     margin-top: 0;
     width: 100%;

@@ -17,7 +17,7 @@ function Review({ reviews }) {
 
   return (
     <>
-      <div>
+      <div className="review-form__wrapper">
         {reviews.map((review) => {
           return (
             <section className="review-form" key={review.id}>

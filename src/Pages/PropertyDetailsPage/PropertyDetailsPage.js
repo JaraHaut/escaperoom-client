@@ -47,6 +47,7 @@ function PropertyDetailsPage() {
   return (
     <>
       <Header />
+
       <Property property={property[0]} reviews={reviews} />
       <Review reviews={reviews} />
     </>

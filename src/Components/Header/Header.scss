@@ -4,7 +4,10 @@
 .header {
   width: 100%;
   padding: 1.6rem;
+  max-width: 102rem;
+  margin: 0 auto;
 }
+
 .header-nav {
   text-decoration: none;
   display: flex;

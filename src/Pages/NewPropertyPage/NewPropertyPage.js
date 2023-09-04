@@ -17,7 +17,7 @@ function NewPropertyPage() {
   const [reception, setReception] = useState("");
   const [pets, setPets] = useState("");
   const [outdoor, setOutdoor] = useState("");
-  const [picture, setPicture] = useState("");
+  const [picture, setPicture] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
 
   const [titleError, setTitleError] = useState(false);
@@ -102,9 +102,9 @@ function NewPropertyPage() {
   };
   const handleAddPicture = (event) => {
     setPicture(event.target.files);
-    // we add the uploaded picture
+    setPictureError(false);
   };
-  console.log(picture);
+  //console.log(picture[0].name);
   const handlePropertySubmit = async (event) => {
     event.preventDefault();
 
@@ -139,27 +139,27 @@ function NewPropertyPage() {
       setBedroomsError(true);
     }
 
-    if (reception === "") {
-      console.log(reception);
-      setReceptionError(true);
-    }
+    // if (reception === "") {
+    //   console.log(reception);
+    //   setReceptionError(true);
+    // }
 
-    if (pets === "") {
-      console.log(pets);
-      setPetsError(true);
-    }
+    // if (pets === "") {
+    //   console.log(pets);
+    //   setPetsError(true);
+    // }
 
-    if (outdoor === "") {
-      console.log(outdoor);
-      setOutdoorError(true);
-    }
+    // if (outdoor === "") {
+    //   console.log(outdoor);
+    //   setOutdoorError(true);
+    // }
 
-    if (picture === "") {
-      console.log(picture);
-      setPictureError(true);
-    }
-
-    if (!imageUrl || picture.length === 0) {
+    // if (picture === "") {
+    //   console.log(picture);
+    //   setPictureError(true);
+    // }
+    //console.log(picture[0].name);
+    if (!picture) {
       setPictureError(true);
 
       return;
@@ -257,202 +257,204 @@ function NewPropertyPage() {
           <h2 className="property__title">New Property</h2>
         </div>
         <form className="property-form" onSubmit={handlePropertySubmit}>
-          <label htmlFor="title" className="property-form__label">
-            Please add a short description of the property
-          </label>
-          <input
-            type="text"
-            name="title"
-            id="title"
-            placeholder="Describe the most relevant features of the property..."
-            className={`property-form__input ${
-              titleError ? "property-form__input--error" : null
-            }`}
-            value={title}
-            onChange={handleAddTitle}
-          />
-          {titleError && <p className="error-message">Please add a title.</p>}
+          <div className="property-form__wrapper">
+            <label htmlFor="title" className="property-form__label">
+              Please add a short description of the property
+            </label>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Describe the most relevant features of the property..."
+              className={`property-form__input ${
+                titleError ? "property-form__input--error" : null
+              }`}
+              value={title}
+              onChange={handleAddTitle}
+            />
+            {titleError && <p className="error-message">Please add a title.</p>}
 
-          <label htmlFor="address" className="property-form__label">
-            Please add the address of the property (this won't be shared
-            publicly)
-          </label>
-          <input
-            type="text"
-            name="address"
-            id="address"
-            placeholder="Add the address..."
-            className={`property-form__input ${
-              titleError ? "property-form__input--error" : null
-            }`}
-            value={address}
-            onChange={handleAddAddress}
-          />
-          {addressError && (
-            <p className="error-message">Please add an address.</p>
-          )}
-          <label htmlFor="postcode" className="property-form__label">
-            Please add the postcode of the property
-          </label>
-          <input
-            type="text"
-            name="postcode"
-            id="postcode"
-            placeholder="Add the postcode..."
-            className={`property-form__input ${
-              titleError ? "property-form__input--error" : null
-            }`}
-            value={postcode}
-            onChange={handleAddPostcode}
-          />
-          {postcodeError && (
-            <p className="error-message">Please add a postcode.</p>
-          )}
-          <label htmlFor="agency" className="property-form__label">
-            Please add the estate agent that is managing the property
-          </label>
-          <input
-            type="text"
-            name="agency"
-            id="agency"
-            placeholder="Add the estate agents..."
-            className={`property-form__input ${
-              titleError ? "property-form__input--error" : null
-            }`}
-            value={agency}
-            onChange={handleAddAgency}
-          />
-          {agencyError && (
-            <p className="error-message">
-              Please add the name of the letting agent.
-            </p>
-          )}
-          <label htmlFor="bedrooms" className="property-form__label">
-            How many bedrooms are there?
-          </label>
-          <select
-            name="bedrooms"
-            id="bedrooms"
-            className={`property-form__input ${
-              titleError ? "property-form__input--error" : null
-            }`}
-            value={bedrooms}
-            onChange={handleAddBedrooms}
-          >
-            <option value="none" className="property-form_option">
-              Select a Value
-            </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-          {bedroomsError && (
-            <p className="error-message">
-              Please select the number of bedrooms.
-            </p>
-          )}
-          <div className="property-form__reception">
-            <div>
-              <label
-                htmlFor="reception"
-                className="property-form__label-checkbox"
-              >
-                Are there common spaces such as living room, reception room,
-                etc.?
-              </label>
-              {receptionError && (
-                <p className="error-message">Please select an option.</p>
-              )}
-            </div>
+            <label htmlFor="address" className="property-form__label">
+              Please add the address of the property (this won't be shared
+              publicly)
+            </label>
             <input
-              type="checkbox"
-              name="reception"
-              id="reception"
-              checked={isCheckedReception}
-              value={reception || []}
-              onChange={handleAddReception}
-              className={`property-form__input-checkbox ${
+              type="text"
+              name="address"
+              id="address"
+              placeholder="Add the address..."
+              className={`property-form__input ${
                 titleError ? "property-form__input--error" : null
               }`}
+              value={address}
+              onChange={handleAddAddress}
             />
-          </div>
-          <div className="property-form__pets">
-            <div>
-              <label htmlFor="pets" className="property-form__label-checkbox">
-                Are pets allowed in this property?
-              </label>
-              {petsError && (
-                <p className="error-message">Please select an option.</p>
-              )}
-            </div>
+            {addressError && (
+              <p className="error-message">Please add an address.</p>
+            )}
+            <label htmlFor="postcode" className="property-form__label">
+              Please add the postcode of the property
+            </label>
             <input
-              type="checkbox"
-              name="pets"
-              id="pets"
-              checked={isCheckedPets}
-              value={pets}
-              onChange={handleAddPets}
-              className={`property-form__input-checkbox ${
+              type="text"
+              name="postcode"
+              id="postcode"
+              placeholder="Add the postcode..."
+              className={`property-form__input ${
                 titleError ? "property-form__input--error" : null
               }`}
+              value={postcode}
+              onChange={handleAddPostcode}
             />
-          </div>
-          <div className="property-form__outdoor">
-            <div>
-              <label
-                htmlFor="outdoor"
-                className="property-form__label-checkbox"
-              >
-                Are there any outdoor spaces in this property such as balcony,
-                terrace, garden, etc.?
-              </label>
-              {outdoorError && (
-                <p className="error-message">Please select an option.</p>
-              )}
-            </div>
+            {postcodeError && (
+              <p className="error-message">Please add a postcode.</p>
+            )}
+            <label htmlFor="agency" className="property-form__label">
+              Please add the estate agent that is managing the property
+            </label>
             <input
-              type="checkbox"
-              name="outdoor"
-              id="outdoor"
-              checked={isCheckedOutdoor}
-              value={outdoor}
-              onChange={handleAddOutdoor}
-              className={`property-form__input-checkbox ${
+              type="text"
+              name="agency"
+              id="agency"
+              placeholder="Add the estate agents..."
+              className={`property-form__input ${
                 titleError ? "property-form__input--error" : null
               }`}
+              value={agency}
+              onChange={handleAddAgency}
             />
-          </div>
-          <div className="property-form__picture">
-            <div className="property-form__picture-wrapper">
-              <label htmlFor="picture" className="property-form__label-file">
-                Upload pictures of the property
-                <div className="property-form__label-icon">
-                  <PhotoCameraFrontOutlinedIcon fontSize="inherit" />
-                </div>
-              </label>
-              {pictureError && (
-                <p className="error-message">Please upload a picture.</p>
-              )}
-            </div>
-            <input
-              type="file"
-              name="picture"
-              id="picture"
-              accept="image/png, image/jpeg"
-              onChange={handleAddPicture}
-              className={`property-form__input-file ${
+            {agencyError && (
+              <p className="error-message">
+                Please add the name of the letting agent.
+              </p>
+            )}
+            <label htmlFor="bedrooms" className="property-form__label">
+              How many bedrooms are there?
+            </label>
+            <select
+              name="bedrooms"
+              id="bedrooms"
+              className={`property-form__input ${
                 titleError ? "property-form__input--error" : null
               }`}
-            />
+              value={bedrooms}
+              onChange={handleAddBedrooms}
+            >
+              <option value="none" className="property-form_option">
+                Select a Value
+              </option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+            {bedroomsError && (
+              <p className="error-message">
+                Please select the number of bedrooms.
+              </p>
+            )}
+            <div className="property-form__reception">
+              <div>
+                <label
+                  htmlFor="reception"
+                  className="property-form__label-checkbox"
+                >
+                  Are there common spaces such as living room, reception room,
+                  etc.?
+                </label>
+                {receptionError && (
+                  <p className="error-message">Please select an option.</p>
+                )}
+              </div>
+              <input
+                type="checkbox"
+                name="reception"
+                id="reception"
+                checked={isCheckedReception}
+                value={reception || []}
+                onChange={handleAddReception}
+                className={`property-form__input-checkbox ${
+                  titleError ? "property-form__input--error" : null
+                }`}
+              />
+            </div>
+            <div className="property-form__pets">
+              <div>
+                <label htmlFor="pets" className="property-form__label-checkbox">
+                  Are pets allowed in this property?
+                </label>
+                {petsError && (
+                  <p className="error-message">Please select an option.</p>
+                )}
+              </div>
+              <input
+                type="checkbox"
+                name="pets"
+                id="pets"
+                checked={isCheckedPets}
+                value={pets}
+                onChange={handleAddPets}
+                className={`property-form__input-checkbox ${
+                  titleError ? "property-form__input--error" : null
+                }`}
+              />
+            </div>
+            <div className="property-form__outdoor">
+              <div>
+                <label
+                  htmlFor="outdoor"
+                  className="property-form__label-checkbox"
+                >
+                  Are there any outdoor spaces in this property such as balcony,
+                  terrace, garden, etc.?
+                </label>
+                {outdoorError && (
+                  <p className="error-message">Please select an option.</p>
+                )}
+              </div>
+              <input
+                type="checkbox"
+                name="outdoor"
+                id="outdoor"
+                checked={isCheckedOutdoor}
+                value={outdoor}
+                onChange={handleAddOutdoor}
+                className={`property-form__input-checkbox ${
+                  titleError ? "property-form__input--error" : null
+                }`}
+              />
+            </div>
+            <div className="property-form__picture">
+              <div className="property-form__picture-wrapper">
+                <label htmlFor="picture" className="property-form__label-file">
+                  Upload pictures of the property
+                  <div className="property-form__label-icon">
+                    <PhotoCameraFrontOutlinedIcon fontSize="inherit" />
+                  </div>
+                </label>
+                {pictureError && (
+                  <p className="error-message">Please upload a picture.</p>
+                )}
+              </div>
+              <input
+                type="file"
+                name="picture"
+                id="picture"
+                accept="image/png, image/jpeg"
+                onChange={handleAddPicture}
+                className={`property-form__input-file ${
+                  titleError ? "property-form__input--error" : null
+                }`}
+              />
+            </div>
+            <button className="property-form__button">Add Property</button>
           </div>
-          <button className="property-form__button">Add Property</button>
         </form>
 
         {success && (

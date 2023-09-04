@@ -5,6 +5,11 @@
   padding: 1.6rem;
   height: 40rem;
 
+  @include tablet {
+    max-width: 102rem;
+    margin: 0 auto;
+  }
+
   &__img {
     border-radius: 5px;
     background-image: url("../../Assets/Images/landscape2medium.jpg");

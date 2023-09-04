@@ -41,55 +41,60 @@ function Property({ property, reviews }) {
   return (
     <>
       <section className="property-details">
-        <h2 className="property-details__title">Property Details</h2>
-        <div className="property-details__card">
-          <div className="property-details__image-container">
-            <img
-              src={picture}
-              alt="apartment"
-              className="property-details__image"
-            />
-            <div className="property-details__rating">
-              Overall Rating: {averageRating} <ReactStars {...readOnlyStars} />
+        <div className="property-details__wrapper">
+          <h2 className="property-details__title">Property Details</h2>
+          <div className="property-details__card">
+            <div className="property-details__image-container">
+              <img
+                src={picture}
+                alt="apartment"
+                className="property-details__image"
+              />
+              <div className="property-details__rating">
+                Overall Rating: {averageRating}{" "}
+                <ReactStars {...readOnlyStars} />
+              </div>
             </div>
-          </div>
 
-          <div className="property-details__card-container">
-            <h3 className="property-details__card-title">{title} </h3>
-            <div className="property-details__card-data">
-              <div className="property-details__card-key">
-                <p className="property-details__key">Address: </p>
-                <p className="property-details__key">Postcode: </p>
-                <p className="property-details__key">Letting Agent:</p>
-                <p className="property-details__key">Bedrooms:</p>
-                <p className="property-details__key">Reception:</p>
-                <p className="property-details__key">Pets allowed:</p>
-                <p className="property-details__key">Outdoor spaces:</p>
-              </div>
-              <div className="property-details__card-value">
-                <p className="property-details__value">{address}</p>
-                <p className="property-details__value">{postcode}</p>
-                <p className="property-details__value">{agency}</p>
-                <p className="property-details__value">{bedrooms}</p>
-                <p className="property-details__value">
-                  {reception ? "Yes" : "No"}
-                </p>
-                <p className="property-details__value">{pets ? "Yes" : "No"}</p>
-                <p className="property-details__value">
-                  {" "}
-                  {outdoor ? "Yes" : "No"}
-                </p>
+            <div className="property-details__card-container">
+              <h3 className="property-details__card-title">{title} </h3>
+              <div className="property-details__card-data">
+                <div className="property-details__card-key">
+                  <p className="property-details__key">Address: </p>
+                  <p className="property-details__key">Postcode: </p>
+                  <p className="property-details__key">Letting Agent:</p>
+                  <p className="property-details__key">Bedrooms:</p>
+                  <p className="property-details__key">Reception:</p>
+                  <p className="property-details__key">Pets allowed:</p>
+                  <p className="property-details__key">Outdoor spaces:</p>
+                </div>
+                <div className="property-details__card-value">
+                  <p className="property-details__value">{address}</p>
+                  <p className="property-details__value">{postcode}</p>
+                  <p className="property-details__value">{agency}</p>
+                  <p className="property-details__value">{bedrooms}</p>
+                  <p className="property-details__value">
+                    {reception ? "Yes" : "No"}
+                  </p>
+                  <p className="property-details__value">
+                    {pets ? "Yes" : "No"}
+                  </p>
+                  <p className="property-details__value">
+                    {" "}
+                    {outdoor ? "Yes" : "No"}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="property-details__addreview">
-          <Link
-            to={`/reviews/${propertyId}/review`}
-            className="property-details__addreview-button"
-          >
-            Add Review
-          </Link>
+          <div className="property-details__addreview">
+            <Link
+              to={`/reviews/${propertyId}/review`}
+              className="property-details__addreview-button"
+            >
+              Add Review
+            </Link>
+          </div>
         </div>
       </section>
     </>

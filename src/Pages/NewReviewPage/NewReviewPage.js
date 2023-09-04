@@ -44,28 +44,29 @@ function NewReviewPage() {
     appId: process.env.REACT_APP_FIREBASE_APPID,
   };
 
-  //implementing functionality for uploading the image
-  const app = initializeApp(firebaseConfig);
-  const storage = getStorage(app, `gs://${firebaseConfig.storageBucket}`);
-  const uploadImage = async (imageFile) => {
-    const storageRef = ref(storage, `${imageFile[0].name}`);
+  // //implementing functionality for uploading the image
+  // const app = initializeApp(firebaseConfig);
+  // const storage = getStorage(app, `gs://${firebaseConfig.storageBucket}`);
+  // const uploadImage = async (imageFile) => {
+  //   const storageRef = ref(storage, `${imageFile[0].name}`);
 
-    try {
-      await uploadBytes(storageRef, imageFile[0]);
-    } catch (error) {
-      console.log(error);
-    }
-    const url = await getDownloadURL(ref(storage, storageRef.fullPath));
-    setImageUrl(url);
-  };
+  //   try {
+  //     await uploadBytes(storageRef, imageFile[0]);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  //   const url = await getDownloadURL(ref(storage, storageRef.fullPath));
+  //   setImageUrl(url);
+  // };
 
   //this is the url of the uploaded image that will be used in the axios request
-  console.log(imageUrl);
+  // console.log(imageUrl);
   //uploadImage(picture);
 
   const handleAddCondition = (event) => {
     setCondition(event.target.value);
     // console.log(setCondition);
+    setConditionError(false);
   };
   const handleAddConfort = (event) => {
     setConfort(event.target.value);
@@ -151,15 +152,15 @@ function NewReviewPage() {
       console.log(date);
       setDateError(true);
     }
-    if (picture === "") {
-      console.log(picture);
-      setPictureError(true);
-    }
+    // if (picture === "") {
+    //   console.log(picture);
+    //   setPictureError(true);
+    // }
 
-    if (!imageUrl || picture.length === 0) {
-      setPictureError(true);
-      return;
-    }
+    // if (!imageUrl || picture.length === 0) {
+    //   setPictureError(true);
+    //   return;
+    // }
     if (
       conditionError ||
       confortError ||
@@ -187,13 +188,13 @@ function NewReviewPage() {
       averageRating
     );
     //we call the function to upload the image within the scope of the handleReviewSubmit function, before the axios request
-    uploadImage(picture);
+    // uploadImage(picture);
 
     try {
       const app = initializeApp(firebaseConfig);
       const storage = getStorage(app, `gs://${firebaseConfig.storageBucket}`);
       console.log("imageFile:", `${picture[0].name}`);
-      const storageRef = ref(storage, `${picture[0].name}`);
+      const storageRef = ref(storage, `jara${picture[0].name}`);
       console.log(storageRef);
       await uploadBytes(storageRef, picture[0]);
       const imageUrl = await getDownloadURL(ref(storage, storageRef.fullPath));

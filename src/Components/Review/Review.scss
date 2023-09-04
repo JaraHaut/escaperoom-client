@@ -8,6 +8,19 @@
   margin: 1.6rem;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 1.6rem;
+  @include tablet {
+    max-width: 102rem;
+    margin: 0 auto;
+  }
+
+  &__wrapper {
+    @include tablet {
+      max-width: 102rem;
+      margin: 0 auto;
+      padding: 1.6rem;
+    }
+  }
 
   &__rating {
     @include h3-styles;
@@ -36,24 +49,27 @@
 
     @include tablet {
       flex-direction: row;
+      justify-content: space-between;
+      max-width: 102rem;
     }
   }
 
   &__data-container {
-    min-width: 25rem;
+    border: 1px solid blue;
+    // min-width: 25rem;
 
     @include tablet {
-      min-width: 30rem;
+      width: 50%;
     }
   }
 
   &__image {
     width: 100%;
+    height: 25rem;
     border-radius: 5px;
     margin-top: 1.6rem;
 
     @include tablet {
-      min-width: 30rem;
     }
 
     &-container {
@@ -64,6 +80,8 @@
   &__experience {
     @include h3-styles;
     @include tablet {
+      width: 50rem;
+
       padding-left: 1.6rem;
     }
   }
