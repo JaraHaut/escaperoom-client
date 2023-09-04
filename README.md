@@ -22,7 +22,8 @@ Technologies used in this project:
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![screenshots_escaperoom](https://github.com/JaraHaut/escaperoom-client/assets/129460672/73e37857-e39a-44bf-b6fc-fd43f7296807)
+
 
 
 ## Installation
