@@ -1,0 +1,54 @@
+@use "../../Styles/partials/variables" as *;
+@use "../../Styles/partials/mixins" as *;
+
+.agency-details {
+  padding: 1.6rem;
+  margin: 1.6rem;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  &__title {
+    @include logo-style;
+    color: $color2;
+    padding-bottom: 1.6rem;
+    margin: 1.6rem;
+  }
+
+  &__subtitle {
+    @include h2-styles;
+    color: $color3;
+    padding-bottom: 1.6rem;
+    margin: 1.6rem;
+  }
+
+  &__list {
+    @include h2-styles;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.6rem;
+
+    @include tablet {
+      flex-direction: row;
+    }
+
+    &-item {
+      border: 2px solid $color1;
+      min-width: 10rem;
+      min-height: 3rem;
+      padding: 1.6rem;
+      margin: 1.6rem;
+      text-align: center;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: $color1;
+      }
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $color3;
+  }
+}
