@@ -36,14 +36,14 @@
     height: 5rem;
     background-color: $secondary-text-light;
     border-radius: 5px;
-    border: 2px solid $color2;
+    border: 2px solid $primary-background;
     @include logo-style;
     padding: 1.6rem;
     font-size: 1.8rem;
     line-height: 1.8rem;
 
     &:hover {
-      background-color: $color2;
+      background-color: $primary-background;
       color: $secondary-text-light;
       border: none;
     }
@@ -58,10 +58,10 @@
 
     &-link {
       text-decoration: none;
-      color: $color1;
+      color: $primary-border;
 
       &:hover {
-        background-color: $color2;
+        background-color: $primary-background;
         color: $secondary-text-light;
         border: none;
       }
@@ -86,14 +86,14 @@
     justify-content: center;
     color: black;
     background-color: $secondary-text-light;
-    border: 2px solid $color2;
+    border: 2px solid $primary-background;
     border-radius: 5px;
     width: 25%;
     height: 5rem;
     padding: 1.6rem;
 
     &:hover {
-      background-color: $color2;
+      background-color: $primary-background;
       color: $secondary-text-light;
       border: none;
     }
@@ -108,10 +108,10 @@
 
     &-link {
       text-decoration: none;
-      color: $color1;
+      color: $primary-border;
 
       &:hover {
-        background-color: $color2;
+        background-color: $primary-background;
         color: $secondary-text-light;
         border: none;
       }
@@ -135,14 +135,14 @@
     align-items: center;
     justify-content: center;
     background-color: $secondary-text-light;
-    border: 2px solid $color2;
+    border: 2px solid $primary-background;
     border-radius: 5px;
     width: 25%;
     height: 5rem;
     padding: 1.6rem;
 
     &:hover {
-      background-color: $color2;
+      background-color: $primary-background;
       color: $secondary-text-light;
       border: none;
     }
@@ -157,10 +157,10 @@
 
     &-link {
       text-decoration: none;
-      color: $color1;
+      color: $primary-border;
 
       &:hover {
-        background-color: $color2;
+        background-color: $primary-background;
         color: $secondary-text-light;
         border: none;
       }
@@ -181,7 +181,7 @@
 
   &__login {
     background-color: $secondary-text-light;
-    border: 2px solid $color2;
+    border: 2px solid $primary-background;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -192,10 +192,10 @@
     height: 5rem;
     padding: 1.6rem 0;
     margin: 0;
-    color: $color1;
+    color: $primary-border;
 
     &:hover {
-      background-color: $color2;
+      background-color: $primary-background;
       color: $secondary-text-light;
       border: none;
     }

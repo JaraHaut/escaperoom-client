@@ -78,7 +78,7 @@
   }
   &__experience {
     @include h3-styles;
-    background-color: $color6;
+    background-color: $secondary-contrast;
     border-radius: 5px;
     @include tablet {
       width: 100%;

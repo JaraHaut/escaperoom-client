@@ -63,11 +63,11 @@
     text-decoration: none;
     opacity: 0;
     transition: 0.5s ease;
-    color: $color1;
+    color: $primary-border;
     position: relative;
 
     &:hover {
-      color: $color1;
+      color: $primary-border;
       opacity: 1;
       text-decoration: none;
     }
@@ -75,10 +75,10 @@
 
   &__title {
     text-decoration: none;
-    color: $color1;
+    color: $primary-border;
 
     &:hover {
-      color: $color1;
+      color: $primary-border;
       opacity: 1;
       text-decoration: none;
     }
@@ -88,10 +88,10 @@
     @include h3-styles;
     font-weight: 500;
     text-decoration: none;
-    color: $color1;
+    color: $primary-border;
 
     &:hover {
-      color: $color1;
+      color: $primary-border;
       opacity: 1;
       text-decoration: none;
     }

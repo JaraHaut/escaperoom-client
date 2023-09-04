@@ -3,7 +3,7 @@
 
 .property__title {
   @include logo-style;
-  color: $color2;
+  color: $primary-background;
 
   &-container {
     padding: 1.6rem;
@@ -57,8 +57,8 @@
 
     &-icon {
       display: flex;
-      background-color: $color6;
-      border: 1px solid $color1;
+      background-color: $secondary-contrast;
+      border: 1px solid $primary-border;
       border-radius: 5px;
       width: 100%;
       height: 3rem;
@@ -66,7 +66,7 @@
       justify-content: center;
       align-items: center;
       font-size: 3rem;
-      color: $color3;
+      color: $primary-text;
     }
 
     &-file {
@@ -81,12 +81,12 @@
     height: 3rem;
     width: 100%;
     border-radius: 5px;
-    border: 1px solid $color1;
-    background-color: $color6;
+    border: 1px solid $primary-border;
+    background-color: $secondary-contrast;
     margin-bottom: 0.6rem;
 
     &:focus {
-      border: 2px solid $color4;
+      border: 2px solid $secondary-background;
       outline: red;
     }
 
@@ -94,8 +94,8 @@
       min-width: 2rem;
       max-width: 5rem;
       align-self: self-start;
-      border: 1px solid $color1;
-      background-color: $color6;
+      border: 1px solid $primary-border;
+      background-color: $secondary-contrast;
     }
 
     &-file {
@@ -103,7 +103,7 @@
     }
 
     &--error {
-      border: $color5 2px solid;
+      border: $secondary-text 2px solid;
       animation: shake 0.5s;
 
       @keyframes shake {
@@ -128,12 +128,12 @@
     height: 3rem;
     border-radius: 5px;
     border: none;
-    background-color: $color2;
+    background-color: $primary-background;
     color: $secondary-text-light;
     margin-top: 1.6rem;
 
     &:hover {
-      background-color: $color4;
+      background-color: $secondary-background;
     }
   }
 
@@ -167,9 +167,9 @@
 
   &__success-message {
     font-size: 1.4rem;
-    // background-color: $color6
+    // background-color: $secondary-contrast
     text-align: center;
-    color: $color5;
+    color: $secondary-text;
     display: flex;
     flex-direction: column;
     padding: 1.6rem;
@@ -184,15 +184,15 @@
     display: flex;
     justify-content: center;
     text-decoration: none;
-    color: $color2;
+    color: $primary-background;
     width: 100%;
     height: 3rem;
-    background-color: $color6;
+    background-color: $secondary-contrast;
     border-radius: 5px;
   }
 }
 
 .error-message {
-  color: $color5;
+  color: $secondary-text;
   font-size: 1rem;
 }
