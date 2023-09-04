@@ -7,17 +7,14 @@ import ReactStars from "react-rating-stars-component";
 function Property({ property, reviews }) {
   const { propertyId } = useParams();
 
-  console.log(reviews);
-  // console.log(reviews[0].rating);
-  // console.log(reviews[1].rating);
+  //Calculate the average of all the reviews for one property
   let ratingArray = reviews.map(({ rating }) => rating);
-  console.log(ratingArray);
   const averageRating = Number(average(ratingArray));
-  console.log(typeof averageRating);
 
   if (!property) {
     return null;
   }
+
   const {
     title,
     address,
@@ -30,6 +27,7 @@ function Property({ property, reviews }) {
     picture,
   } = property;
 
+  //Show the average rating with read-only stars
   const readOnlyStars = {
     size: 30,
     value: averageRating,
@@ -37,7 +35,7 @@ function Property({ property, reviews }) {
     color: "#f7c1bb",
     activeColor: "#885151",
   };
-  console.log(readOnlyStars);
+
   return (
     <>
       <section className="property-details">

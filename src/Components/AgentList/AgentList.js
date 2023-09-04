@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import "./AgentList.scss";
 
 function AgentList({ agencies }) {
-  console.log(agencies);
+  if (!agencies) {
+    return;
+  }
   return (
     <section className="agency-list">
       <div className="agency-list__wrapper">

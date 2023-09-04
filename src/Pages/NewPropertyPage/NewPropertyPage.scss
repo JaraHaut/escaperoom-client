@@ -4,6 +4,7 @@
 .property__title {
   @include logo-style;
   color: $color2;
+
   &-container {
     padding: 1.6rem;
   }
@@ -19,10 +20,6 @@
   flex-direction: column;
   width: 100%;
   padding: 1.6rem;
-  // margin: 1.6rem;
-
-  // align-items: center;
-  // justify-content: center;
 
   @include tablet {
     max-width: 102rem;
@@ -86,9 +83,7 @@
     border-radius: 5px;
     border: 1px solid $color1;
     background-color: $color6;
-    //justify-content: start;
     margin-bottom: 0.6rem;
-    // justify-self: start;
 
     &:focus {
       border: 2px solid $color4;

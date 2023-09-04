@@ -1,24 +1,16 @@
 import "./Header.scss";
 import { Link } from "react-router-dom";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import AddCommentOutlinedIcon from "@mui/icons-material/AddCommentOutlined";
-import AddHomeWorkOutlinedIcon from "@mui/icons-material/AddHomeWorkOutlined";
 import BusinessOutlinedIcon from "@mui/icons-material/BusinessOutlined";
-import { AddHomeOutlined } from "@mui/icons-material";
 import AddHomeOutlinedIcon from "@mui/icons-material/AddHomeOutlined";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 
 function Header() {
-  // console.log(typeof AccountCircleOutlinedIcon);
   return (
     <>
       <header className="header">
         <nav className="header-nav">
           <div className="header-nav__home">
             <Link className="header-nav__home-link" to="/properties">
-              {/* <div className="header-nav__home-icon">
-                <HomeOutlinedIcon fontSize="inherit" />
-              </div> */}
               escape room
             </Link>
           </div>

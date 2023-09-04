@@ -16,7 +16,7 @@ function AgentPage() {
       const agency = await axios.get(
         `${process.env.REACT_APP_API_URL}/agencies/${agencyId}`
       );
-      console.log(agency.data);
+
       setAgency(agency.data);
     } catch (error) {
       console.error(
@@ -29,7 +29,6 @@ function AgentPage() {
       const agencies = await axios.get(
         `${process.env.REACT_APP_API_URL}/agencies`
       );
-      console.log(agencies.data);
       setAllAgencies(agencies.data);
     } catch (error) {
       console.error(`Error fetching the agencies`);

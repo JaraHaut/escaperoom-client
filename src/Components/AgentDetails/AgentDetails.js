@@ -8,8 +8,6 @@ import "./AgentDetails.scss";
 function AgentDetails() {
   const { agency } = useParams();
   const [propertiesFiltered, setPropertiesFiltered] = useState([]);
-  const [propertiesError, setPropertiesError] = useState(false);
-  console.log(agency);
 
   const getPropertiesByAgency = async () => {
     try {
@@ -17,8 +15,6 @@ function AgentDetails() {
         `${process.env.REACT_APP_API_URL}/agencies/${agency}`
       );
       setPropertiesFiltered(response.data);
-      console.log("properties filtered by agency", response.data);
-      setPropertiesError(false);
     } catch (error) {
       console.error(`Error fetching properties for agency ${agency}`);
     }
@@ -43,9 +39,7 @@ function AgentDetails() {
             </h2>
           </div>
           <div className="agency-details__subtitle-wrapper">
-            <h3 className="agency-details__subtitle">
-              Letting Agent: {`${agency}`}
-            </h3>
+            <h3 className="agency-details__subtitle">{`${agency}`}</h3>
           </div>
           <div className="agency-details__list-container">
             <ul className="agency-details__list">
@@ -58,12 +52,11 @@ function AgentDetails() {
                   >
                     <img
                       src={property.picture}
-                      alt=""
+                      alt="apartment interiors"
                       className="agency-details__img"
                     />
                   </Link>
-                  <h3>{property.title}</h3>
-                  <h3>{property.rating}</h3>
+                  <h3 className="agency-details__subtitle">{property.title}</h3>
                 </li>
               ))}
             </ul>

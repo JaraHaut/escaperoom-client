@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
 import Header from "../../Components/Header/Header";
 import { average } from "../../Lib/average";
 import PhotoCameraFrontOutlinedIcon from "@mui/icons-material/PhotoCameraFrontOutlined";
@@ -44,25 +43,6 @@ function NewReviewPage() {
     appId: process.env.REACT_APP_FIREBASE_APPID,
   };
 
-  // //implementing functionality for uploading the image
-  // const app = initializeApp(firebaseConfig);
-  // const storage = getStorage(app, `gs://${firebaseConfig.storageBucket}`);
-  // const uploadImage = async (imageFile) => {
-  //   const storageRef = ref(storage, `${imageFile[0].name}`);
-
-  //   try {
-  //     await uploadBytes(storageRef, imageFile[0]);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  //   const url = await getDownloadURL(ref(storage, storageRef.fullPath));
-  //   setImageUrl(url);
-  // };
-
-  //this is the url of the uploaded image that will be used in the axios request
-  // console.log(imageUrl);
-  //uploadImage(picture);
-
   const handleAddCondition = (event) => {
     setCondition(event.target.value);
     setConditionError(false);
@@ -93,14 +73,13 @@ function NewReviewPage() {
   };
   const handleAddPicture = (event) => {
     setPicture(event.target.files);
-    // we add the uploaded picture
+    setPictureError(false);
   };
-  //console.log(picture);
 
   const handleReviewSubmit = async (event) => {
     event.preventDefault();
 
-    //Average rating of the review calculation
+    //Average rating of the review
     const ratingArray = [
       Number(condition),
       Number(confort),
@@ -108,49 +87,33 @@ function NewReviewPage() {
       Number(management),
     ];
 
-    //showing rating with stars (only read)
-
     const averageRating = average(ratingArray);
 
     //Form validation
-
     if (condition === "") {
-      console.log(condition);
       setConditionError(true);
     }
     if (confort === "") {
-      console.log(confort);
       setConfortError(true);
     }
     if (safety === "") {
-      console.log(safety);
       setSafetyError(true);
     }
     if (management === "") {
-      console.log(management);
       setManagementError(true);
     }
     if (comments === "") {
-      console.log(comments);
       setCommentsError(true);
     }
     if (price === "") {
-      console.log(price);
       setPriceError(true);
     }
     if (date === "") {
-      console.log(date);
       setDateError(true);
     }
-    // if (picture === "") {
-    //   console.log(picture);
-    //   setPictureError(true);
-    // }
 
-    // if (!imageUrl || picture.length === 0) {
-    //   setPictureError(true);
-    //   return;
-    // }
+    //we let the user to post a review without a picture so we omit validation for the picture
+
     if (
       conditionError ||
       confortError ||
@@ -163,34 +126,20 @@ function NewReviewPage() {
     ) {
       return <p className="error-message">Please fill al the fields.</p>;
     }
-    // Check if a picture has been selected
 
-    console.log(
-      "input values",
-      condition,
-      confort,
-      safety,
-      management,
-      comments,
-      price,
-      date,
-      imageUrl,
-      averageRating
-    );
-    //we call the function to upload the image within the scope of the handleReviewSubmit function, before the axios request
-    // uploadImage(picture);
+    //Call the function to upload the image within the scope of the handleReviewSubmit function, before the axios request
 
     try {
       const app = initializeApp(firebaseConfig);
       const storage = getStorage(app, `gs://${firebaseConfig.storageBucket}`);
-      console.log("imageFile:", `${picture[0].name}`);
-      const storageRef = ref(storage, `jara${picture[0].name}`);
-      console.log(storageRef);
+
+      const storageRef = ref(storage, `review${picture[0].name}`);
+
       await uploadBytes(storageRef, picture[0]);
       const imageUrl = await getDownloadURL(ref(storage, storageRef.fullPath));
       setImageUrl(imageUrl);
-      console.log(imageUrl);
 
+      //axios request at the same time of the upload image function
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/reviews/${propertyId}/review`,
         {
@@ -205,8 +154,8 @@ function NewReviewPage() {
           rating: averageRating,
         }
       );
-
       console.log("Review added successfully", response.data);
+      //Empty the form after submission
       setCondition("");
       setConfort("");
       setSafety("");
@@ -217,14 +166,14 @@ function NewReviewPage() {
       setPicture("");
       setSuccess(true);
     } catch (error) {
-      console.log(error);
-      console.error(`Error adding the review`);
+      console.error(`Error adding the review`, error);
     }
   };
 
   return (
     <>
       <Header />
+
       <div className="review__title-container">
         <h2 className="review__title">Add your Review</h2>
       </div>

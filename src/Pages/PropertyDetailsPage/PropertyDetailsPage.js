@@ -16,7 +16,6 @@ function PropertyDetailsPage() {
       const property = await axios.get(
         `${process.env.REACT_APP_API_URL}/properties/${propertyId}`
       );
-      console.log(property.data);
       setProperty(property.data);
     } catch (error) {
       console.error(`Error fetching property with id ${propertyId}`);
@@ -28,10 +27,8 @@ function PropertyDetailsPage() {
       const reviews = await axios.get(
         `${process.env.REACT_APP_API_URL}/reviews/${propertyId}/reviews`
       );
-      console.log(reviews.data);
       setReviews(reviews.data);
     } catch (error) {
-      console.log(error);
       console.error(
         `Error fetching reviews for property with id ${propertyId}`
       );
@@ -42,7 +39,6 @@ function PropertyDetailsPage() {
     getProperty();
     getAllReviews();
   }, []);
-  console.log(getProperty);
 
   return (
     <>

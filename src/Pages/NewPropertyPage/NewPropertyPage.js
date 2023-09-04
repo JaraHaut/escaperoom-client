@@ -3,7 +3,6 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import "./NewPropertyPage.scss";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 import axios from "axios";
 import Header from "../../Components/Header/Header";
 import PhotoCameraFrontOutlinedIcon from "@mui/icons-material/PhotoCameraFrontOutlined";
@@ -36,7 +35,7 @@ function NewPropertyPage() {
 
   const [success, setSuccess] = useState(false);
 
-  //authentication to use firebase
+  //authentication to use firebase to upload images to the cloud storage
   const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
     authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
@@ -46,24 +45,6 @@ function NewPropertyPage() {
     appId: process.env.REACT_APP_FIREBASE_APPID,
   };
 
-  // //implementing functionality for uploading the image
-  // const app = initializeApp(firebaseConfig);
-  // const storage = getStorage(app, `gs://${firebaseConfig.storageBucket}`);
-  // const uploadImageProperty = async (imageFile) => {
-  //   console.log("imageFile:", imageFile);
-  //   const storageRef = ref(storage, `${imageFile[0].name}`);
-  //   console.log(storageRef);
-
-  //   try {
-  //     await uploadBytes(storageRef, imageFile[0]);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  //   const url = await getDownloadURL(ref(storage, storageRef.fullPath));
-  //   setImageUrl(url);
-  // };
-  // //this is the url of the uploaded image that will be used in the axios request
-  // console.log(imageUrl);
   const handleAddTitle = (event) => {
     setTitle(event.target.value);
     setTitleError(false);
@@ -101,16 +82,16 @@ function NewPropertyPage() {
     setPicture(event.target.files);
     setPictureError(false);
   };
-  //console.log(picture[0].name);
+
   const handlePropertySubmit = async (event) => {
     event.preventDefault();
 
-    //we transform the checkbox results into 0 or 1 to send the right type of data to the api
+    //Checkbox values
     const receptionValue = isCheckedReception;
     const petsValue = isCheckedPets;
     const outdoorValue = isCheckedOutdoor;
 
-    //add validation
+    //Form validation
     if (title === "") {
       setTitleError(true);
     }
@@ -137,39 +118,12 @@ function NewPropertyPage() {
       return;
     }
 
-    console.log(
-      "input values",
-      title,
-      address,
-      postcode,
-      agency,
-      bedrooms,
-      reception,
-      pets,
-      outdoor,
-      picture
-    );
-    console.log(
-      titleError,
-      addressError,
-      postcodeError,
-      agencyError,
-      bedroomsError,
-      receptionError,
-      petsError,
-      outdoorError,
-      pictureError
-    );
-
     if (
       titleError ||
       addressError ||
       postcodeError ||
       agencyError ||
       bedroomsError ||
-      receptionError ||
-      petsError ||
-      outdoorError ||
       pictureError
     ) {
       return <p className="error-message">Please fill al the fields.</p>;
@@ -179,15 +133,14 @@ function NewPropertyPage() {
       //implementing functionality for uploading the image
       const app = initializeApp(firebaseConfig);
       const storage = getStorage(app, `gs://${firebaseConfig.storageBucket}`);
-      console.log("imageFile:", `${picture[0].name}`);
+
       const storageRef = ref(storage, `property_${picture[0].name}`);
-      console.log(storageRef);
 
       await uploadBytes(storageRef, picture[0]);
       const imageUrl = await getDownloadURL(ref(storage, storageRef.fullPath));
       setImageUrl(imageUrl);
-      console.log(imageUrl);
 
+      //axios request at the same time of the upload image function
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/properties/add`,
         {
@@ -203,7 +156,8 @@ function NewPropertyPage() {
         }
       );
       console.log("Property added successfully", response.data);
-      //empty the form after submission
+
+      //Empty the form after submission
       setTitle("");
       setAddress("");
       setPostcode("");
@@ -215,8 +169,7 @@ function NewPropertyPage() {
       setImageUrl("");
       setSuccess(true);
     } catch (error) {
-      console.log(error);
-      console.error(`Error adding the property`);
+      console.error(`Error adding the property`, error);
     }
   };
 

@@ -1,34 +1,7 @@
 import "./PropertyCard.scss";
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
-import axios from "axios";
-function PropertyCard({ properties }) {
-  //need to add average rating here (algorithm and stars)
-  //get request to the db to fetch the average rating of each review
-  const [reviews, setReviews] = useState([]);
-  const { propertyId } = useParams();
-  const getAllReviews = async () => {
-    try {
-      const reviews = await axios.get(
-        `${process.env.REACT_APP_API_URL}/reviews/${propertyId}/reviews`
-      );
-      console.log(reviews.data);
-      setReviews(reviews.data);
-    } catch (error) {
-      console.log(error);
-      console.error(
-        `Error fetching reviews for property with id ${propertyId}`
-      );
-    }
-  };
-  useEffect(() => {
-    getAllReviews();
-  }, []);
-  console.log(reviews);
-  // console.log(reviews[0].rating);
-  // console.log(reviews[1].rating);
 
+function PropertyCard({ properties }) {
   if (!properties) {
     return <div className="">No properties available.</div>;
   }

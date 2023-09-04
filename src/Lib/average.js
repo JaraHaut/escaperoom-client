@@ -3,5 +3,5 @@ export function average(array) {
   for (let i = 0; i < array.length; i++) {
     sum += array[i];
   }
-  return (sum / array.length).toFixed(2);
+  return Number((sum / array.length).toFixed(2));
 }
