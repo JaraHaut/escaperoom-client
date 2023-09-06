@@ -9,7 +9,11 @@ function Property({ property, reviews }) {
 
   //Calculate the average of all the reviews for one property
   let ratingArray = reviews.map(({ rating }) => rating);
+  // console.log(ratingArray);
+
   const averageRating = Number(average(ratingArray));
+  console.log(averageRating);
+  // console.log(typeof averageRating);
 
   if (!property) {
     return null;
@@ -32,8 +36,8 @@ function Property({ property, reviews }) {
     size: 30,
     value: averageRating,
     edit: false,
-    color: "#f7c1bb",
-    activeColor: "#885151",
+    color: "#b2ddff",
+    activeColor: "#76c2ff",
   };
 
   return (
@@ -48,10 +52,6 @@ function Property({ property, reviews }) {
                 alt="apartment"
                 className="property-details__image"
               />
-              <div className="property-details__rating">
-                Overall Rating: {averageRating}{" "}
-                <ReactStars {...readOnlyStars} />
-              </div>
             </div>
 
             <div className="property-details__card-container">
@@ -85,13 +85,22 @@ function Property({ property, reviews }) {
               </div>
             </div>
           </div>
-          <div className="property-details__addreview">
-            <Link
-              to={`/reviews/${propertyId}/review`}
-              className="property-details__addreview-button"
-            >
-              Add Review
-            </Link>
+          {averageRating && (
+            <div className="property-details__rating">
+              Overall Rating: {averageRating} <ReactStars {...readOnlyStars} />
+            </div>
+          )}
+          <div className="property-details__button-wrapper">
+            <div className="property-details__link">
+              <Link
+                to={`/reviews/${propertyId}/review`}
+                className="property-details__link-button"
+              >
+                Add a New Review
+              </Link>
+            </div>
+            <div className="property-details__link">Edit</div>
+            <div className="property-details__link">Delete</div>
           </div>
         </div>
       </section>

@@ -49,12 +49,12 @@
   &__title {
     @include logo-style;
     opacity: 100%;
-    color: $secondary-text;
+    color: $dark-blue;
     z-index: 2;
   }
 
   &__description {
-    color: $primary-text;
+    color: $neutral-5;
     max-height: 30rem;
   }
 }

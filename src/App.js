@@ -28,6 +28,7 @@ function App() {
           />
           <Route path="/agencies" element={<AgentPage />} />
           <Route path="/agencies/:agency" element={<AgentPage />} />
+          {/* <Route path="*" element={<ErrorPage />} /> */}
         </Routes>
       </BrowserRouter>
     </>

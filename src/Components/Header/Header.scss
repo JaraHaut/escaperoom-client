@@ -34,17 +34,17 @@
     justify-content: center;
     width: 25%;
     height: 5rem;
-    background-color: $secondary-text-light;
+    background-color: $primary-dark;
     border-radius: 5px;
-    border: 2px solid $primary-background;
+    // border: 2px solid $primary-background;
     @include logo-style;
     padding: 1.6rem;
     font-size: 1.8rem;
     line-height: 1.8rem;
 
     &:hover {
-      background-color: $primary-background;
-      color: $secondary-text-light;
+      background-color: $neutral-0;
+      color: $primary-dark;
       border: none;
     }
 
@@ -58,11 +58,12 @@
 
     &-link {
       text-decoration: none;
-      color: $primary-border;
+      color: $neutral-0;
+      text-align: center;
 
       &:hover {
-        background-color: $primary-background;
-        color: $secondary-text-light;
+        background-color: $neutral-0;
+        color: $primary-dark;
         border: none;
       }
     }
@@ -85,16 +86,16 @@
     align-items: center;
     justify-content: center;
     color: black;
-    background-color: $secondary-text-light;
-    border: 2px solid $primary-background;
+    background-color: $primary-dark;
+    // border: 2px solid $primary-background;
     border-radius: 5px;
     width: 25%;
     height: 5rem;
     padding: 1.6rem;
 
     &:hover {
-      background-color: $primary-background;
-      color: $secondary-text-light;
+      background-color: $neutral-0;
+      color: $primary-dark;
       border: none;
     }
 
@@ -108,11 +109,11 @@
 
     &-link {
       text-decoration: none;
-      color: $primary-border;
+      color: $neutral-0;
 
       &:hover {
-        background-color: $primary-background;
-        color: $secondary-text-light;
+        background-color: $neutral-0;
+        color: $primary-dark;
         border: none;
       }
     }
@@ -134,16 +135,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $secondary-text-light;
-    border: 2px solid $primary-background;
+    background-color: $primary-dark;
+    // border: 2px solid $primary-background;
     border-radius: 5px;
     width: 25%;
     height: 5rem;
     padding: 1.6rem;
 
     &:hover {
-      background-color: $primary-background;
-      color: $secondary-text-light;
+      background-color: $neutral-0;
+      color: $primary-dark;
       border: none;
     }
 
@@ -157,11 +158,11 @@
 
     &-link {
       text-decoration: none;
-      color: $primary-border;
+      color: $neutral-0;
 
       &:hover {
-        background-color: $primary-background;
-        color: $secondary-text-light;
+        background-color: $neutral-0;
+        color: $primary-dark;
         border: none;
       }
     }
@@ -180,8 +181,7 @@
   }
 
   &__login {
-    background-color: $secondary-text-light;
-    border: 2px solid $primary-background;
+    background-color: $primary-dark;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -192,11 +192,11 @@
     height: 5rem;
     padding: 1.6rem 0;
     margin: 0;
-    color: $primary-border;
+    color: $neutral-0;
 
     &:hover {
-      background-color: $primary-background;
-      color: $secondary-text-light;
+      background-color: $neutral-0;
+      color: $primary-dark;
       border: none;
     }
 
