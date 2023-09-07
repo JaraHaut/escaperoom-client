@@ -114,7 +114,6 @@ function NewPropertyPage() {
 
     if (!picture) {
       setPictureError(true);
-
       return;
     }
 

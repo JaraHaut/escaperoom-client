@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import Header from "../../Components/Header/Header";
 import { average } from "../../Lib/average";
 import PhotoCameraFrontOutlinedIcon from "@mui/icons-material/PhotoCameraFrontOutlined";
+import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
 
 function NewReviewPage() {
   const [condition, setCondition] = useState("");
@@ -111,8 +112,10 @@ function NewReviewPage() {
     if (date === "") {
       setDateError(true);
     }
-
-    //we let the user to post a review without a picture so we omit validation for the picture
+    if (!picture) {
+      setPictureError(true);
+      return;
+    }
 
     if (
       conditionError ||
@@ -175,6 +178,14 @@ function NewReviewPage() {
       <Header />
 
       <div className="review__title-container">
+        <Link
+          to={`/reviews/${propertyId}/review`}
+          className="review__title-back"
+        >
+          <div className="review__title-icon">
+            <ArrowBackIosNewOutlinedIcon fontSize="inherit" />
+          </div>
+        </Link>
         <h2 className="review__title">Add your Review</h2>
       </div>
 
@@ -396,10 +407,15 @@ function NewReviewPage() {
 
       {success && (
         <div className="review-form__success-message">
-          Your review has been successfully added!
-          <Link to={`/properties/${propertyId}`} className="review-form__link">
-            View Review
-          </Link>
+          <div className="review-form__message-wrapper">
+            Your review has been successfully added!
+            <Link
+              to={`/properties/${propertyId}`}
+              className="review-form__link"
+            >
+              View Review
+            </Link>
+          </div>
         </div>
       )}
     </>

@@ -29,7 +29,7 @@
 
   &__title {
     @include logo-style;
-    color: $primary-background;
+    color: $body-text;
     padding-bottom: 1.6rem;
     margin: 1.6rem;
   }
@@ -51,29 +51,50 @@
     }
 
     &-item {
-      border: 2px solid $primary-border;
+      // border: 2px solid $primary-border;
+      background-color: $light-green;
       min-width: 10rem;
       min-height: 3rem;
       padding: 1.6rem;
-      margin: 1.6rem;
+      margin: 1.6rem 0;
       text-align: center;
       border-radius: 5px;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      @include tablet {
+        flex-direction: column;
+      }
 
       &:hover {
-        background-color: $secondary-contrast;
+        background-color: $light-green-2;
       }
     }
   }
 
   &__link {
     text-decoration: none;
-    color: $primary-text;
+    color: $neutral-5;
     flex-shrink: 0;
+
     // width: 300px;
     // height: 200px;
     // border-radius: 10px;
     // margin-left: 10px;
+  }
+
+  &__rating {
+    font-size: 1.4rem;
+    height: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    @include tablet {
+      justify-content: flex-end;
+    }
   }
 }

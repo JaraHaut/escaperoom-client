@@ -96,10 +96,10 @@ function Property({ property, reviews }) {
                 to={`/reviews/${propertyId}/review`}
                 className="property-details__link-button"
               >
-                Add a New Review
+                Add Review
               </Link>
             </div>
-            <div className="property-details__link">Edit</div>
+            <div className="property-details__link-middle">Edit</div>
             <div className="property-details__link">Delete</div>
           </div>
         </div>

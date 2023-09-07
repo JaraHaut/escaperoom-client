@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import ReactStars from "react-rating-stars-component";
 
 import "./AgentDetails.scss";
 
@@ -9,6 +10,13 @@ function AgentDetails() {
   const { agency } = useParams();
   const [propertiesFiltered, setPropertiesFiltered] = useState([]);
 
+  const readOnlyStars = {
+    size: 20,
+    value: 3.45,
+    edit: false,
+    color: "#b2ddff",
+    activeColor: "#76c2ff",
+  };
   const getPropertiesByAgency = async () => {
     try {
       const response = await axios.get(
@@ -59,6 +67,10 @@ function AgentDetails() {
                   <h3 className="agency-details__property-title">
                     {property.title}
                   </h3>
+                  <div className="agency-details__rating">
+                    Rating: 3.45
+                    <ReactStars {...readOnlyStars} />
+                  </div>
                 </li>
               ))}
             </ul>

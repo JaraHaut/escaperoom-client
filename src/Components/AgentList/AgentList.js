@@ -1,8 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./AgentList.scss";
+import ReactStars from "react-rating-stars-component";
 
 function AgentList({ agencies }) {
+  const readOnlyStars = {
+    size: 20,
+    value: 2.73,
+    edit: false,
+    color: "#b2ddff",
+    activeColor: "#76c2ff",
+  };
+
   if (!agencies) {
     return;
   }
@@ -19,6 +28,10 @@ function AgentList({ agencies }) {
                 <Link to={`/agencies/${agency}`} className="agency-list__link">
                   {agency}
                 </Link>
+                <div className="agency-list__rating">
+                  Rating: 2.73
+                  <ReactStars {...readOnlyStars} />
+                </div>
               </li>
             ))}
           </ul>
