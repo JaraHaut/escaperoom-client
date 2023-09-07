@@ -12,29 +12,33 @@ function PropertyCard({ properties }) {
           return (
             <>
               {" "}
-              <Link
-                to={`/properties/${property.id}`}
-                key={property.id}
-                style={{ textDecoration: "none" }}
-              >
-                <section
-                  className="property-card"
-                  style={{ backgroundImage: `url(${property.picture})` }}
+              {property && (
+                <Link
+                  to={`/properties/${property.id}`}
+                  key={property.id}
+                  style={{ textDecoration: "none" }}
                 >
-                  <div className="property-card__wrapper">
-                    <h2 className="property-card__title">{property.title} </h2>
-                    <p className="property-card__data">
-                      Postcode: {property.postcode}
-                    </p>
-                    <p className="property-card__data">
-                      Letting Agent: {property.agency}
-                    </p>
-                    <p className="property-card__data">
-                      No. bedrooms: {property.bedrooms}
-                    </p>
-                  </div>
-                </section>
-              </Link>
+                  <section
+                    className="property-card"
+                    style={{ backgroundImage: `url(${property.picture})` }}
+                  >
+                    <div className="property-card__wrapper">
+                      <h2 className="property-card__title">
+                        {property.title}{" "}
+                      </h2>
+                      <p className="property-card__data">
+                        Postcode: {property.postcode}
+                      </p>
+                      <p className="property-card__data">
+                        Letting Agent: {property.agency}
+                      </p>
+                      <p className="property-card__data">
+                        No. bedrooms: {property.bedrooms}
+                      </p>
+                    </div>
+                  </section>
+                </Link>
+              )}
             </>
           );
         })}

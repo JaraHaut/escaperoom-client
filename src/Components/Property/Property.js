@@ -12,7 +12,7 @@ function Property({ property, reviews }) {
   // console.log(ratingArray);
 
   const averageRating = Number(average(ratingArray));
-  console.log(averageRating);
+  //console.log(averageRating);
   // console.log(typeof averageRating);
 
   if (!property) {
